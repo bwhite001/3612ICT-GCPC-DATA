@@ -1,0 +1,48 @@
+#wrapper {
+    position: relative;
+    width: 980px;
+    margin: auto;
+    margin-top: 10px;
+    color: #555;
+}
+#content {
+	background-color: #FFF;
+	min-height: 305px;
+	padding: 20px;
+	border: solid #CCC 1px;
+}
+#tabContent {
+	color: #555;
+}
+#tabContent h1, #tabContent h2,#tabContent h3, #tabContent h4, #changeColor h1  {
+	color: white;
+	padding: 1%;
+	margin: 0px;
+	margin-bottom: 20px;
+	font-size: 30px;
+	background-color: #3a78a2;
+}
+#tabContent h6 {
+    text-align: center; 
+    color: white; 
+    padding: 1%; 
+    margin: 0px; 
+    margin-bottom: 20px; 
+    font-size: 20px; 
+    background-color: #6dabd5;
+}
+#tabContent h2 {
+		width: 78%;
+		margin-left: 20%;
+		background-color: #4785af;
+}
+#tabContent h3 {
+		width: 58%;
+		margin-left: 40%;
+		background-color: #5391bb;
+}
+#tabContent h4 {
+		width: 38%;
+		margin-left: 60%;
+		background-color: #609ec8;
+}

@@ -5,15 +5,17 @@ error_reporting(E_ALL + E_NOTICE);
 
 require 'libs/smarty/libs/Smarty.class.php';
 include 'includes/navbar.php';
+include 'includes/defs.php';
 
 $smarty = new Smarty;
 
-$navbarMain["home"]["selected"] = 1;
+$selectedTab = (in_array(getInputData('t'), array("s", "e", "p","r","a")))? getInputData('t') : "s";
 
-$smarty->assign("navbarMain", $navbarMain);
-$smarty->assign("navbarSide", $navbarSide);
-$smarty->assign("hud", $hud);
-$smarty->assign("template", 'homepage');
+$navbar[$selectedTab]['selected'] = 1;
+
+$smarty->assign("navbar", $navbar);
+
+$smarty->assign("template", $navbar[$selectedTab]['link']);
 
 
 $smarty->display("core.tpl");

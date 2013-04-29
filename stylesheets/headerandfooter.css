@@ -1,0 +1,68 @@
+#headerStyle h1, #headerStyle h2 {
+    margin: 0px;
+}
+#headerStyle {
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    background-color: #069; 
+    color: #FFF;
+    height: 65px;
+    box-shadow: 0px 1px 2px #555;
+}
+#headerbar {
+    width: 980px;
+    margin: auto;
+}
+#users {
+    float: right;
+    margin: 23px 0px;
+}
+#headerStyle h1 {
+    position: absolute;
+    float: left;
+    font-size: 44px;
+}
+#headerStyle h2 {
+    float: left;
+    font-size: 16px;
+    margin-top: 40px;
+    margin-left: 78px;
+}
+
+#currentSeries p {
+    float: left;
+    margin: 0px;
+}
+#currentSeries {
+    font-size: 1.5em;
+    height: 32px;
+    width: 600px;
+    margin: auto;
+    margin-top: 74px;
+}
+#currentSeries .button {
+    font-size: 0.5em;
+}
+#changeSeries {
+    height: 30px;     
+    margin: 0px;     
+    background-color: white;     
+    border: solid #CCC 1px;     
+    color: #555;     
+    font-size: 20px;
+}
+#changeSeriesHolder {
+    float: right;
+    margin-right: 2%;
+}
+#changeSeriesButton {
+    border: solid #2D6B95 1px;
+    background-color: #4785af;
+    font-size: 20px;
+    color:  white;
+    padding: 3px;
+}
+#changeSeriesButton:hover {
+    background-color: #3a78a2;
+}

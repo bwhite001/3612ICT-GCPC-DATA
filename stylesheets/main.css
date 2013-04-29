@@ -1,0 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+@import url("../fonts/entypo.css");
+@import url("headerandfooter.css");
+@import url("inputs.css");
+
+body {
+	font-family: 'Droid Sans', sans-serif;
+	background-color: #F5F5F5;
+	margin: 0px;
+	padding: 0px;
+}

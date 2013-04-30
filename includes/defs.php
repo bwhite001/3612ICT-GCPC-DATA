@@ -2,8 +2,8 @@
 /*
  * Function definitions for list-detail example.
  */
-
 require "includes/db_defs.php";
+require "functions/shooters.php";
 
 function nicetime($date)
     {

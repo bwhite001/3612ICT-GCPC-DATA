@@ -9,15 +9,40 @@ include 'includes/defs.php';
 
 $smarty = new Smarty;
 
-$selectedTab = (in_array(getInputData('t'), array("s", "e", "p","r","a")))? getInputData('t') : "s";
+$selectedTab = (in_array(getInputData('t'), array("s", "e", "p","r","a", "sa", "se")))? getInputData('t') : "s";
 
-$navbar[$selectedTab]['selected'] = 1;
+$template = sendDataToSmarty($navbar, $smarty, $selectedTab);
 
-$smarty->assign("navbar", $navbar);
+$smarty->display("dashboardTabs/".$template.".tpl");
 
-$smarty->assign("template", $navbar[$selectedTab]['link']);
+function sendDataToSmarty($navbar, $smarty, $tab)
+{
 
+	$template = $navbar[$tab]['link'];
 
-$smarty->display("core.tpl");
+	switch ($tab) {
+		#shooters
+		case 's':
+			$navbar[$tab]['selected'] = 1;
+			$query = getInputData('query');
+			$currentPage = (getInputData('page') == "") ? : getInputData('page');
+			$currentLetter = (ctype_alpha(strtoupper(getInputData('letter')))) ? strtoupper(getInputData('letter')) : "A";
+			list($shooters, $shooterLetters, $currentPage, $totalPages) = getShooters($query, $currentLetter, $currentPage);
+			$smarty->assign("currentLetter", $currentLetter);
+			$smarty->assign("query", $query);
+			$smarty->assign("currentPage", $currentPage);
+			$smarty->assign("totalPages", $totalPages);
+			$smarty->assign("shooterLetters", $shooterLetters);
+			$smarty->assign("shooters", $shooters);
+			break;
+		case 'sa':
+			$navbar["s"]['selected'] = 1;
+			$template = "shooters/shooterForm";
+			break;
+	}
 
+	$smarty->assign("navbar", $navbar);
+
+	return $template;
+}
 ?>

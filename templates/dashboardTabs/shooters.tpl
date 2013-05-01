@@ -32,30 +32,30 @@
 		</p>
 		<span style='display:block; clear:both'></span>
 		<h3>All Shooters with the last name Starting With {$currentLetter}</h3>
-		{if $totalPages > 1}
-			<p style='text-align:center;'>Page {$currentPage} out of {$totalPages}</p>
-			<div id="pages">
-				<p style='margin:0px auto;float: right;'>
-					{if $currentPage == 1}
-						<span class='prev list_letter disabled'><span style='margin: 6px 0;display: block;'>Previous</span></span>
+	{/if}
+	{if $totalPages > 1}
+		<p style='text-align:center;'>Page {$currentPage} out of {$totalPages}</p>
+		<div id="pages">
+			<p style='margin:0px auto;float: right;'>
+				{if $currentPage == 1}
+					<span class='prev list_letter disabled'><span style='margin: 6px 0;display: block;'>Previous</span></span>
+				{else}
+					<span class='prev list_letter'><a href='dash.php?t=s{$q}page={$currentPage-1}'>Previous</a></span>
+				{/if}
+				{for $page=1 to $totalPages}
+					{if $page == $currentPage}
+						<span class='list_letter selected'><span style='margin: 6px 0;display: block;'>{$page}</span></span>
 					{else}
-						<span class='prev list_letter'><a href='dash.php?t=s{$q}page={$currentPage-1}'>Previous</a></span>
+						<span class='list_letter'><a href='dash.php?t=s{$q}page={$page}'>{$page}</a></span>
 					{/if}
-					{for $page=1 to $totalPages}
-						{if $page == $currentPage}
-							<span class='list_letter selected'><span style='margin: 6px 0;display: block;'>{$page}</span></span>
-						{else}
-							<span class='list_letter'><a href='dash.php?t=s{$q}page={$page}'>{$page}</a></span>
-						{/if}
-					{/for}
-					{if $currentPage == $totalPages}
-						<span class='next list_letter disabled'><span style='margin: 6px 0;display: block;'>Next</span></span>
-					{else}
-						<span class='next list_letter'><a href='dash.php?t=s{$q}page={$currentPage+1}'>Next</a></span>
-					{/if}
-				</p>
-			</div>
-		{/if}
+				{/for}
+				{if $currentPage == $totalPages}
+					<span class='next list_letter disabled'><span style='margin: 6px 0;display: block;'>Next</span></span>
+				{else}
+					<span class='next list_letter'><a href='dash.php?t=s{$q}page={$currentPage+1}'>Next</a></span>
+				{/if}
+			</p>
+		</div>
 	{/if}
 	{if count($shooters) > 0}
 		<table id='shooterTable'>

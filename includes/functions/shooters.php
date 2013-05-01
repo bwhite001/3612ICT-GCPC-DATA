@@ -80,5 +80,13 @@ function getShooterLetterArray()
 
 	return $out;
 }
-
+function getShooter($id, $type)
+{	
+	$id = sanitiseMyStringNow($id);
+	$shooter = array('' => , );
+	if(doesExist("shooters", $id) && $type == "edit")
+	{
+		$shooter = getInfo("shooters", $id)
+	}
+}
 ?>

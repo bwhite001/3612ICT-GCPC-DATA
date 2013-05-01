@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-01 02:43:42
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-02 09:06:25
          compiled from "./templates/dashboardTabs/shooters.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:909292334517e68ed651d20-19696200%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '96f2091a440146195f0c2215569720aa89fd2626' => 
     array (
       0 => './templates/dashboardTabs/shooters.tpl',
-      1 => 1367336531,
+      1 => 1367445971,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
@@ -84,43 +84,43 @@ $_smarty_tpl->tpl_vars['a']->first = $_smarty_tpl->tpl_vars['a']->iteration == 1
 		<span style='display:block; clear:both'></span>
 		<h3>All Shooters with the last name Starting With <?php echo $_smarty_tpl->tpl_vars['currentLetter']->value;?>
 </h3>
-		<?php if ($_smarty_tpl->tpl_vars['totalPages']->value>1){?>
-			<p style='text-align:center;'>Page <?php echo $_smarty_tpl->tpl_vars['currentPage']->value;?>
+	<?php }?>
+	<?php if ($_smarty_tpl->tpl_vars['totalPages']->value>1){?>
+		<p style='text-align:center;'>Page <?php echo $_smarty_tpl->tpl_vars['currentPage']->value;?>
  out of <?php echo $_smarty_tpl->tpl_vars['totalPages']->value;?>
 </p>
-			<div id="pages">
-				<p style='margin:0px auto;float: right;'>
-					<?php if ($_smarty_tpl->tpl_vars['currentPage']->value==1){?>
-						<span class='prev list_letter disabled'><span style='margin: 6px 0;display: block;'>Previous</span></span>
-					<?php }else{ ?>
-						<span class='prev list_letter'><a href='dash.php?t=s<?php echo $_smarty_tpl->tpl_vars['q']->value;?>
+		<div id="pages">
+			<p style='margin:0px auto;float: right;'>
+				<?php if ($_smarty_tpl->tpl_vars['currentPage']->value==1){?>
+					<span class='prev list_letter disabled'><span style='margin: 6px 0;display: block;'>Previous</span></span>
+				<?php }else{ ?>
+					<span class='prev list_letter'><a href='dash.php?t=s<?php echo $_smarty_tpl->tpl_vars['q']->value;?>
 page=<?php echo $_smarty_tpl->tpl_vars['currentPage']->value-1;?>
 '>Previous</a></span>
-					<?php }?>
-					<?php $_smarty_tpl->tpl_vars['page'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['page']->step = 1;$_smarty_tpl->tpl_vars['page']->total = (int)ceil(($_smarty_tpl->tpl_vars['page']->step > 0 ? $_smarty_tpl->tpl_vars['totalPages']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['totalPages']->value)+1)/abs($_smarty_tpl->tpl_vars['page']->step));
+				<?php }?>
+				<?php $_smarty_tpl->tpl_vars['page'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['page']->step = 1;$_smarty_tpl->tpl_vars['page']->total = (int)ceil(($_smarty_tpl->tpl_vars['page']->step > 0 ? $_smarty_tpl->tpl_vars['totalPages']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['totalPages']->value)+1)/abs($_smarty_tpl->tpl_vars['page']->step));
 if ($_smarty_tpl->tpl_vars['page']->total > 0){
 for ($_smarty_tpl->tpl_vars['page']->value = 1, $_smarty_tpl->tpl_vars['page']->iteration = 1;$_smarty_tpl->tpl_vars['page']->iteration <= $_smarty_tpl->tpl_vars['page']->total;$_smarty_tpl->tpl_vars['page']->value += $_smarty_tpl->tpl_vars['page']->step, $_smarty_tpl->tpl_vars['page']->iteration++){
 $_smarty_tpl->tpl_vars['page']->first = $_smarty_tpl->tpl_vars['page']->iteration == 1;$_smarty_tpl->tpl_vars['page']->last = $_smarty_tpl->tpl_vars['page']->iteration == $_smarty_tpl->tpl_vars['page']->total;?>
-						<?php if ($_smarty_tpl->tpl_vars['page']->value==$_smarty_tpl->tpl_vars['currentPage']->value){?>
-							<span class='list_letter selected'><span style='margin: 6px 0;display: block;'><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+					<?php if ($_smarty_tpl->tpl_vars['page']->value==$_smarty_tpl->tpl_vars['currentPage']->value){?>
+						<span class='list_letter selected'><span style='margin: 6px 0;display: block;'><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 </span></span>
-						<?php }else{ ?>
-							<span class='list_letter'><a href='dash.php?t=s<?php echo $_smarty_tpl->tpl_vars['q']->value;?>
+					<?php }else{ ?>
+						<span class='list_letter'><a href='dash.php?t=s<?php echo $_smarty_tpl->tpl_vars['q']->value;?>
 page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 '><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 </a></span>
-						<?php }?>
-					<?php }} ?>
-					<?php if ($_smarty_tpl->tpl_vars['currentPage']->value==$_smarty_tpl->tpl_vars['totalPages']->value){?>
-						<span class='next list_letter disabled'><span style='margin: 6px 0;display: block;'>Next</span></span>
-					<?php }else{ ?>
-						<span class='next list_letter'><a href='dash.php?t=s<?php echo $_smarty_tpl->tpl_vars['q']->value;?>
+					<?php }?>
+				<?php }} ?>
+				<?php if ($_smarty_tpl->tpl_vars['currentPage']->value==$_smarty_tpl->tpl_vars['totalPages']->value){?>
+					<span class='next list_letter disabled'><span style='margin: 6px 0;display: block;'>Next</span></span>
+				<?php }else{ ?>
+					<span class='next list_letter'><a href='dash.php?t=s<?php echo $_smarty_tpl->tpl_vars['q']->value;?>
 page=<?php echo $_smarty_tpl->tpl_vars['currentPage']->value+1;?>
 '>Next</a></span>
-					<?php }?>
-				</p>
-			</div>
-		<?php }?>
+				<?php }?>
+			</p>
+		</div>
 	<?php }?>
 	<?php if (count($_smarty_tpl->tpl_vars['shooters']->value)>0){?>
 		<table id='shooterTable'>

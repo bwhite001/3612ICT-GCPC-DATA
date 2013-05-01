@@ -37,6 +37,7 @@ function sendDataToSmarty($navbar, $smarty, $tab)
 			break;
 		case 'sa':
 			$navbar["s"]['selected'] = 1;
+			$shooter = getShooter(getInputData('id'));
 			$template = "shooters/shooterForm";
 			break;
 	}

@@ -46,3 +46,30 @@ a {
     cursor: pointer;
     text-decoration: none;
 }
+.formTitle {
+    display: block;
+    float: left;
+    width: 48%;
+    text-align: right;
+    margin-right: 2%;
+}
+.formText {
+    display: block;
+    float: left;
+    width: 48%;
+    padding: 3px 1%;
+    border: solid 1px #AAA;
+    font-size: inherit;
+    box-shadow: 1px 1px 0px #DDD inset,1px 1px 0px #BBB inset;
+}
+.formText.select {
+    background-color: white;
+    border: solid 1px black;
+    width: 49.3%;
+    text-align: center;
+}
+.button.formtext {
+    margin-left: 40%;
+    margin-top: 20px;
+    width: 20%;
+}

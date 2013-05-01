@@ -1,0 +1,18 @@
+#shooterForm {
+    width: 60%;
+    margin-left: 30%;
+    font-size: 1.3em;
+    color: #222;
+}
+#shooterForm .formTitle {
+    width: 25%;
+    margin-top: 4px;
+}
+#shooterForm .formText {
+    width: 70%;
+	
+}
+#shooterForm .formText.select {
+    width: 72.3%;
+	
+}

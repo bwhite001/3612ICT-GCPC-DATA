@@ -105,8 +105,22 @@ function getArray($table, $query)
   }
   function doesExist($table, $id)
   {
-      $sql = "SELECT id FROM ".$table." WHERE id='".$id."'";
-      
+    if($table == "-1")
+    {
+      if(isset($id))
+      {
+        $sql = $id;
+      }
+      else
+      {
+        $sql = "";
+      }
+    }
+    else
+    {
+      $sql = "SELECT * FROM `".$type."` WHERE id = ".$id;
+    }
+
       $count = getSqlCount($sql);
 
       $bool = ($count == 1);

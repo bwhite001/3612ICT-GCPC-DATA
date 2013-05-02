@@ -14,6 +14,9 @@
         <div id='wrapper'>
             {include file="header.tpl"}
             <div id='content'>
+                {if $error_string != ""}
+                    <p class='errorSting {$error_is_good}'>{$error_string}</p>
+                {/if}
                 <div id='tabContent'>
                     {block name=body}<h1>Main Body</h1>{/block}
                 </div>

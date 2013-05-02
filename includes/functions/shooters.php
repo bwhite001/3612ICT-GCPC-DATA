@@ -80,13 +80,76 @@ function getShooterLetterArray()
 
 	return $out;
 }
-function getShooter($id, $type)
+function getShooter($id)
 {	
 	$id = sanitiseMyStringNow($id);
-	$shooter = array('' => , );
-	if(doesExist("shooters", $id) && $type == "edit")
+
+	if(doesExist("shooters", $id))
 	{
-		$shooter = getInfo("shooters", $id)
+		$shooter = getInfo("shooters", $id);
+		return $shooter;
+	}
+	else
+	{
+		return "-1";
+	}
+}
+
+function addShooter($data)
+{
+	$valid_data = array("firstname","lastname","male","senior","grade","cnumber","rfid");
+	$shooter = array();
+	$hasError = false;
+	$errorSting = "There are Errors in the Form! ";
+	foreach($data as $name => $value) {
+		if(in_array($name, $valid_data))
+		{
+			if(sanitiseMyStringNow($value) == "" && !($name == "cnumber" || $name == "rfid"))
+			{
+				$errorSting .= ucwords($name)." cannot be Blank ";
+				$shooter[$name] = sanitiseMyStringNow($value);
+				$hasError = true;
+			}
+			else
+			{
+				if($name == "firstname" || $name == "lastname")
+					$value = ucwords($value);
+
+				$shooter[$name] = sanitiseMyStringNow($value);
+			}
+		}
+	}
+
+	$firstname = $shooter['firstname'];
+	$lastname = $shooter['lastname'];
+
+	if(doesExist("-1","SELECT * FROM `shooters` WHERE firstname = '$firstname' AND lastname = '$lastname';"))
+	{
+		$hasError = true;
+		$errorSting = "The Shooter, $firstname $lastname already exists!";
+	}
+
+	if($hasError)
+	{	
+		$_SESSION['shooter_has_error'] = true;
+
+		foreach($shooter as $name => $value) {
+			$_SESSION[$name] = $value;
+		}
+
+		return array(false, "", $errorSting);
+
+	}
+	else
+	{
+		unset($_SESSION['shooter_has_error']);
+		foreach($shooter as $name => $value) {
+			unset($_SESSION[$name]);
+		}
+
+		$sql = createQuery("shooters", $shooter);
+
+		return array(true, $sql, "$firstname $lastname");
 	}
 }
 ?>

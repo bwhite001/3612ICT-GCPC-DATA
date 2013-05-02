@@ -61,3 +61,17 @@
     font-size: 20px;
     background-color: #5CF;
 }
+.errorSting {
+    text-align: center;
+    background-color: #FAA;
+    color: #F00;
+    margin-top: 0px;
+    padding: 5px;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    border-bottom: solid 1px #AAA;
+}
+.errorSting.true {
+    background-color: #AFA;
+    color: #070;
+}

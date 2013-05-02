@@ -6,7 +6,7 @@
 	<p style='text-align: center;'>Add New Shooter: <a href='dash.php?t=sa' class='button' id='newshooter'>&#59136;</a>
 	<form action='dash.php?t=s' method='get' id='searchShooters'>
 		<span id='searchText'>&#128269;</span>
-		<input type='text' name='query' id="searchTextbox" value='{$query}'/>
+		<input type='text' name='query' placeholder='Search By Firstname or Lastname or Both' id="searchTextbox" value='{$query}'/>
 
 		<input class='button search' type='submit' value='Search' /> 
 		<a class='button search clear' href='dash.php?t=s'>Clear</a>
@@ -26,7 +26,7 @@
 				{else if $l == $currentLetter}
 					<span class='list_letter selected'><span style='margin: 6px 0;display: block;'>{$l}</span></span>
 				{else}
-					<span class='list_letter'><a href='dash.php?t=s&letter={$l}'>{$l}</a></span>
+					<span class='list_letter'><a href='dash.php?t=s&letter={$l}#Listbox'>{$l}</a></span>
 				{/if}
 			{/for}
 		</p>
@@ -40,19 +40,19 @@
 				{if $currentPage == 1}
 					<span class='prev list_letter disabled'><span style='margin: 6px 0;display: block;'>Previous</span></span>
 				{else}
-					<span class='prev list_letter'><a href='dash.php?t=s{$q}page={$currentPage-1}'>Previous</a></span>
+					<span class='prev list_letter'><a href='dash.php?t=s{$q}page={$currentPage-1}#pages'>Previous</a></span>
 				{/if}
 				{for $page=1 to $totalPages}
 					{if $page == $currentPage}
 						<span class='list_letter selected'><span style='margin: 6px 0;display: block;'>{$page}</span></span>
 					{else}
-						<span class='list_letter'><a href='dash.php?t=s{$q}page={$page}'>{$page}</a></span>
+						<span class='list_letter'><a href='dash.php?t=s{$q}page={$page}#pages'>{$page}</a></span>
 					{/if}
 				{/for}
 				{if $currentPage == $totalPages}
 					<span class='next list_letter disabled'><span style='margin: 6px 0;display: block;'>Next</span></span>
 				{else}
-					<span class='next list_letter'><a href='dash.php?t=s{$q}page={$currentPage+1}'>Next</a></span>
+					<span class='next list_letter'><a href='dash.php?t=s{$q}page={$currentPage+1}#pages'>Next</a></span>
 				{/if}
 			</p>
 		</div>
@@ -72,8 +72,9 @@
 					<td>{if $shooter.male}Male{else}Female{/if}</td>
 					<td>{if $shooter.grade == 0}D{else if $shooter.grade == 1}C{else if $shooter.grade == 2}B{else if $shooter.grade == 3}A{else if $shooter.grade == 4}Master{/if}</td>
 					<td>{if $shooter.senior}False{else}True{/if}</td>
-					<td><a href="">Edit</a></td>
-					<td><a href=''>Stats</a></td>
+					{assign "backurl" urlencode("dash.php?t=s{$q}page={$currentPage}")}
+					<td><a style='color:#07B' href='dash.php?t=se&id={$shooter.id}&backurl={$backurl}'>Edit</a></td>
+					<td><a style='color:#07B' href=''>Stats</a></td>
 				</tr>
 			{/foreach}
 		</table>

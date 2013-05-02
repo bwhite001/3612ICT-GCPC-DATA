@@ -16,3 +16,9 @@
     width: 72.3%;
 	
 }
+.back.button {
+    float: right;
+    font-size: 0.5em;
+    margin-top: 1px;
+    padding-bottom: 6px;
+}

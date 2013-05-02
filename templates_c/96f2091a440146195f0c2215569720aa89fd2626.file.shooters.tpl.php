@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-02 09:06:25
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-02 17:36:47
          compiled from "./templates/dashboardTabs/shooters.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:909292334517e68ed651d20-19696200%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '96f2091a440146195f0c2215569720aa89fd2626' => 
     array (
       0 => './templates/dashboardTabs/shooters.tpl',
-      1 => 1367445971,
+      1 => 1367468814,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
     array (
       0 => '/var/www/gcpc/templates/core.tpl',
-      1 => 1367323598,
+      1 => 1367476255,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.12',
   'unifunc' => 'content_517e68ed659c05_70147446',
+  'variables' => 
+  array (
+    'error_string' => 0,
+    'error_is_good' => 0,
+  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_517e68ed659c05_70147446')) {function content_517e68ed659c05_70147446($_smarty_tpl) {?><!DOCTYPE html>
@@ -42,13 +47,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
             <div id='content'>
+                <?php if ($_smarty_tpl->tpl_vars['error_string']->value!=''){?>
+                    <p class='errorSting <?php echo $_smarty_tpl->tpl_vars['error_is_good']->value;?>
+'><?php echo $_smarty_tpl->tpl_vars['error_string']->value;?>
+</p>
+                <?php }?>
                 <div id='tabContent'>
                     
 	<h1>Shooters Administration</h1>
 	<p style='text-align: center;'>Add New Shooter: <a href='dash.php?t=sa' class='button' id='newshooter'>&#59136;</a>
 	<form action='dash.php?t=s' method='get' id='searchShooters'>
 		<span id='searchText'>&#128269;</span>
-		<input type='text' name='query' id="searchTextbox" value='<?php echo $_smarty_tpl->tpl_vars['query']->value;?>
+		<input type='text' name='query' placeholder='Search By Firstname or Lastname or Both' id="searchTextbox" value='<?php echo $_smarty_tpl->tpl_vars['query']->value;?>
 '/>
 
 		<input class='button search' type='submit' value='Search' /> 
@@ -76,7 +86,7 @@ $_smarty_tpl->tpl_vars['a']->first = $_smarty_tpl->tpl_vars['a']->iteration == 1
 </span></span>
 				<?php }else{ ?>
 					<span class='list_letter'><a href='dash.php?t=s&letter=<?php echo $_smarty_tpl->tpl_vars['l']->value;?>
-'><?php echo $_smarty_tpl->tpl_vars['l']->value;?>
+#Listbox'><?php echo $_smarty_tpl->tpl_vars['l']->value;?>
 </a></span>
 				<?php }?>
 			<?php }} ?>
@@ -96,7 +106,7 @@ $_smarty_tpl->tpl_vars['a']->first = $_smarty_tpl->tpl_vars['a']->iteration == 1
 				<?php }else{ ?>
 					<span class='prev list_letter'><a href='dash.php?t=s<?php echo $_smarty_tpl->tpl_vars['q']->value;?>
 page=<?php echo $_smarty_tpl->tpl_vars['currentPage']->value-1;?>
-'>Previous</a></span>
+#pages'>Previous</a></span>
 				<?php }?>
 				<?php $_smarty_tpl->tpl_vars['page'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['page']->step = 1;$_smarty_tpl->tpl_vars['page']->total = (int)ceil(($_smarty_tpl->tpl_vars['page']->step > 0 ? $_smarty_tpl->tpl_vars['totalPages']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['totalPages']->value)+1)/abs($_smarty_tpl->tpl_vars['page']->step));
 if ($_smarty_tpl->tpl_vars['page']->total > 0){
@@ -108,7 +118,7 @@ $_smarty_tpl->tpl_vars['page']->first = $_smarty_tpl->tpl_vars['page']->iteratio
 					<?php }else{ ?>
 						<span class='list_letter'><a href='dash.php?t=s<?php echo $_smarty_tpl->tpl_vars['q']->value;?>
 page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
-'><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+#pages'><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 </a></span>
 					<?php }?>
 				<?php }} ?>
@@ -117,7 +127,7 @@ page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 				<?php }else{ ?>
 					<span class='next list_letter'><a href='dash.php?t=s<?php echo $_smarty_tpl->tpl_vars['q']->value;?>
 page=<?php echo $_smarty_tpl->tpl_vars['currentPage']->value+1;?>
-'>Next</a></span>
+#pages'>Next</a></span>
 				<?php }?>
 			</p>
 		</div>
@@ -143,8 +153,11 @@ $_smarty_tpl->tpl_vars['shooter']->_loop = true;
 					<td><?php if ($_smarty_tpl->tpl_vars['shooter']->value['male']){?>Male<?php }else{ ?>Female<?php }?></td>
 					<td><?php if ($_smarty_tpl->tpl_vars['shooter']->value['grade']==0){?>D<?php }elseif($_smarty_tpl->tpl_vars['shooter']->value['grade']==1){?>C<?php }elseif($_smarty_tpl->tpl_vars['shooter']->value['grade']==2){?>B<?php }elseif($_smarty_tpl->tpl_vars['shooter']->value['grade']==3){?>A<?php }elseif($_smarty_tpl->tpl_vars['shooter']->value['grade']==4){?>Master<?php }?></td>
 					<td><?php if ($_smarty_tpl->tpl_vars['shooter']->value['senior']){?>False<?php }else{ ?>True<?php }?></td>
-					<td><a href="">Edit</a></td>
-					<td><a href=''>Stats</a></td>
+					<?php $_smarty_tpl->tpl_vars["backurl"] = new Smarty_variable(urlencode("dash.php?t=s".((string)$_smarty_tpl->tpl_vars['q']->value)."page=".((string)$_smarty_tpl->tpl_vars['currentPage']->value)), null, 0);?>
+					<td><a style='color:#07B' href='dash.php?t=se&id=<?php echo $_smarty_tpl->tpl_vars['shooter']->value['id'];?>
+&backurl=<?php echo $_smarty_tpl->tpl_vars['backurl']->value;?>
+'>Edit</a></td>
+					<td><a style='color:#07B' href=''>Stats</a></td>
 				</tr>
 			<?php } ?>
 		</table>

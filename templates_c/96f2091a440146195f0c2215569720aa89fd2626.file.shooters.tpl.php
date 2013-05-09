@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-02 17:36:47
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-09 12:53:37
          compiled from "./templates/dashboardTabs/shooters.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:909292334517e68ed651d20-19696200%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '96f2091a440146195f0c2215569720aa89fd2626' => 
     array (
       0 => './templates/dashboardTabs/shooters.tpl',
-      1 => 1367468814,
+      1 => 1367716434,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
     array (
       0 => '/var/www/gcpc/templates/core.tpl',
-      1 => 1367476255,
+      1 => 1368063232,
       2 => 'file',
     ),
   ),
@@ -39,8 +39,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <link rel="stylesheet" type="text/css" href="stylesheets/dash.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/dash/shooter.css">
         <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-        <script src="scripts/main.js"></script>
-        <script src="scripts/dash/shooter.js"></script>
+        <script src="clientscripts/main.js"></script>
+        
     </head>
     <body>
         <div id='wrapper'>
@@ -55,7 +55,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div id='tabContent'>
                     
 	<h1>Shooters Administration</h1>
-	<p style='text-align: center;'>Add New Shooter: <a href='dash.php?t=sa' class='button' id='newshooter'>&#59136;</a>
 	<form action='dash.php?t=s' method='get' id='searchShooters'>
 		<span id='searchText'>&#128269;</span>
 		<input type='text' name='query' placeholder='Search By Firstname or Lastname or Both' id="searchTextbox" value='<?php echo $_smarty_tpl->tpl_vars['query']->value;?>
@@ -67,10 +66,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<?php if ($_smarty_tpl->tpl_vars['query']->value!=''){?>
 		<?php $_smarty_tpl->tpl_vars["q"] = new Smarty_variable("&query=".((string)$_smarty_tpl->tpl_vars['query']->value)."&", null, 0);?>
 		<h2>Current Shooters that match '<?php echo $_smarty_tpl->tpl_vars['query']->value;?>
-'</h2>
+'<a href='dash.php?t=sa' class='button' id='newshooter'>New</a></h2>
 	<?php }else{ ?>
 		<?php $_smarty_tpl->tpl_vars["q"] = new Smarty_variable("&letter=".((string)$_smarty_tpl->tpl_vars['currentLetter']->value)."&", null, 0);?>
-		<h2>Current Shooters</h2>
+		<h2>Current Shooters <a href='dash.php?t=sa' class='button' id='newshooter'>New</a></h2>
 		<span id='letterText'>Search By Last Name:</span>
 		<p id='Listbox'>
 			<?php $_smarty_tpl->tpl_vars['a'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['a']->step = 1;$_smarty_tpl->tpl_vars['a']->total = (int)ceil(($_smarty_tpl->tpl_vars['a']->step > 0 ? 90+1 - (65) : 65-(90)+1)/abs($_smarty_tpl->tpl_vars['a']->step));
@@ -152,7 +151,7 @@ $_smarty_tpl->tpl_vars['shooter']->_loop = true;
 </td>
 					<td><?php if ($_smarty_tpl->tpl_vars['shooter']->value['male']){?>Male<?php }else{ ?>Female<?php }?></td>
 					<td><?php if ($_smarty_tpl->tpl_vars['shooter']->value['grade']==0){?>D<?php }elseif($_smarty_tpl->tpl_vars['shooter']->value['grade']==1){?>C<?php }elseif($_smarty_tpl->tpl_vars['shooter']->value['grade']==2){?>B<?php }elseif($_smarty_tpl->tpl_vars['shooter']->value['grade']==3){?>A<?php }elseif($_smarty_tpl->tpl_vars['shooter']->value['grade']==4){?>Master<?php }?></td>
-					<td><?php if ($_smarty_tpl->tpl_vars['shooter']->value['senior']){?>False<?php }else{ ?>True<?php }?></td>
+					<td><?php if ($_smarty_tpl->tpl_vars['shooter']->value['senior']){?>No<?php }else{ ?>Yes<?php }?></td>
 					<?php $_smarty_tpl->tpl_vars["backurl"] = new Smarty_variable(urlencode("dash.php?t=s".((string)$_smarty_tpl->tpl_vars['q']->value)."page=".((string)$_smarty_tpl->tpl_vars['currentPage']->value)), null, 0);?>
 					<td><a style='color:#07B' href='dash.php?t=se&id=<?php echo $_smarty_tpl->tpl_vars['shooter']->value['id'];?>
 &backurl=<?php echo $_smarty_tpl->tpl_vars['backurl']->value;?>

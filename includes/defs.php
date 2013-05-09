@@ -5,6 +5,8 @@
 
 require "includes/db_defs.php";
 require "functions/shooters.php";
+require "functions/series.php";
+require "functions/accounts.php";
 
 function nicetime($date)
     {
@@ -59,7 +61,7 @@ function nicetime($date)
     }
  function encriptPassword($username, $password)
  {
-    $salt = substr($username);
+    $salt = $username;
     $storedPassword = crypt($password, $salt);
 
     return $storedPassword;

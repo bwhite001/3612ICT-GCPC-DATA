@@ -1,0 +1,94 @@
+#Listbox {
+    width: 934px; 
+    min-height: 41px; 
+    border: solid #000; 
+    background-color: #222; margin: 0px; margin-bottom: 10px;
+    color: #CCC;
+    font-size: 1.5em;
+}
+.list_letter {
+    color: #CCC; 
+    font-size: 24px; 
+    display: block; 
+    float: left; 
+    text-align: center; 
+    background-color: #555; 
+    border: solid 1px #000; 
+    padding: 0px 4px; 
+    margin: 5px 20px;
+}
+.list_letter:hover {
+	background-color: #777;
+	color: #4BF;
+}
+.listboxTitle {
+    display: block; 
+    float: left; 
+    font-size: 34px; 
+    margin-left: 5px;
+}
+.list_letter.selected {
+	color: #999;
+}
+.list_letter.selected:hover {
+    background-color: #555;
+}
+table {
+    text-align: center;
+    width: 900px;
+    margin: 10px auto;
+    border: solid #CCC 3px;
+    border-collapse: collapse;
+}
+th, td{
+    padding: 10px;
+    border: solid #CCC 1px;
+}
+th {
+    background-color: #EEE;
+}
+
+#pages {
+    width: 940px;
+    min-height: 44px;
+    background-color: #5CF;
+}
+.list_page {
+    text-align: center;
+    font-size: 20px;
+    width: 20px;
+    padding: 10px;
+    border: solid 1px #0AF;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+.prev.list_page {
+    width: 80px;
+}
+.next.list_page{
+    width: 46px;
+    float: right;
+}
+.list_page:hover {
+	background-color: rgba(255,255,255,0.2);
+    color: #000;
+}
+.list_page.disabled {
+    color: #000;
+    border: none;
+}
+.list_page.selected {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: none;
+    padding: 11px;
+}
+.list_page.disabled:hover {
+	background-color: transparent;
+	color: #000;
+}
+.list_page.selected:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+}

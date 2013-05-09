@@ -7,8 +7,8 @@
         <link rel="stylesheet" type="text/css" href="stylesheets/dash.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/dash/{block name=template}main{/block}.css">
         <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-        <script src="scripts/main.js"></script>
-        <script src="scripts/dash/{block name=template}main{/block}.js"></script>
+        <script src="clientscripts/main.js"></script>
+        {block name=js}{/block}
     </head>
     <body>
         <div id='wrapper'>

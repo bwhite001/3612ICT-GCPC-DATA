@@ -3,7 +3,6 @@
 {block name=template}shooter{/block}
 {block name=body}
 	<h1>Shooters Administration</h1>
-	<p style='text-align: center;'>Add New Shooter: <a href='dash.php?t=sa' class='button' id='newshooter'>&#59136;</a>
 	<form action='dash.php?t=s' method='get' id='searchShooters'>
 		<span id='searchText'>&#128269;</span>
 		<input type='text' name='query' placeholder='Search By Firstname or Lastname or Both' id="searchTextbox" value='{$query}'/>
@@ -13,10 +12,10 @@
 	</form>
 	{if $query != ""}
 		{assign "q" "&query={$query}&"}
-		<h2>Current Shooters that match '{$query}'</h2>
+		<h2>Current Shooters that match '{$query}'<a href='dash.php?t=sa' class='button' id='newshooter'>New</a></h2>
 	{else}
 		{assign "q" "&letter={$currentLetter}&"}
-		<h2>Current Shooters</h2>
+		<h2>Current Shooters <a href='dash.php?t=sa' class='button' id='newshooter'>New</a></h2>
 		<span id='letterText'>Search By Last Name:</span>
 		<p id='Listbox'>
 			{for $a=65 to 90}
@@ -71,7 +70,7 @@
 					<td>{$shooter.lastname}, {$shooter.firstname}</td>
 					<td>{if $shooter.male}Male{else}Female{/if}</td>
 					<td>{if $shooter.grade == 0}D{else if $shooter.grade == 1}C{else if $shooter.grade == 2}B{else if $shooter.grade == 3}A{else if $shooter.grade == 4}Master{/if}</td>
-					<td>{if $shooter.senior}False{else}True{/if}</td>
+					<td>{if $shooter.senior}No{else}Yes{/if}</td>
 					{assign "backurl" urlencode("dash.php?t=s{$q}page={$currentPage}")}
 					<td><a style='color:#07B' href='dash.php?t=se&id={$shooter.id}&backurl={$backurl}'>Edit</a></td>
 					<td><a style='color:#07B' href=''>Stats</a></td>

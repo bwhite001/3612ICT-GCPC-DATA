@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-02 17:30:57
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-05 12:05:25
          compiled from "./templates/dashboardTabs/shooters/shooterForm.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:541675120517fe6731afee4-77361023%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '27b6f85e87dae73dbe3314332245836e1fd14eb2' => 
     array (
       0 => './templates/dashboardTabs/shooters/shooterForm.tpl',
-      1 => 1367473148,
+      1 => 1367582386,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
     array (
       0 => '/var/www/gcpc/templates/core.tpl',
-      1 => 1367476255,
+      1 => 1367715866,
       2 => 'file',
     ),
   ),
@@ -40,7 +40,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <link rel="stylesheet" type="text/css" href="stylesheets/dash/shooterForm.css">
         <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script src="scripts/main.js"></script>
-        <script src="scripts/dash/shooterForm.js"></script>
+        
     </head>
     <body>
         <div id='wrapper'>
@@ -76,14 +76,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <span class="formTitle">Gender:</span>
 
         <select name="male" id="male" class='formText select'>
-            <option value="true">Male</option>
-            <option value="false">Female</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
         </select>
 
         <span class="formTitle">Age:</span>
         <select id='senior' name="senior" class='formText select'>
-            <option value="true">Senior</option>
-            <option value="false">Junior</option>
+            <option value="1">Senior</option>
+            <option value="0">Junior</option>
         </select>
 
         <span class="formTitle">Grade:</span>

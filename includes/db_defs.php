@@ -35,7 +35,6 @@ function sqlQuery($query)
 function getSqlCount($query)
 {
 	$server = mysql_open();
-
 	$result = mysql_query($query);
 
 	mysql_close($server);
@@ -61,10 +60,7 @@ function getArray($table, $query)
     {
       $q = "SELECT * FROM `".$table."`";
     }
-
     $result = sqlQuery($q);
-
-
     if(isset($result))
     {
       while($row = mysql_fetch_array($result))
@@ -96,7 +92,6 @@ function getArray($table, $query)
     {
       $sql = "SELECT * FROM `".$type."` WHERE id = ".$id;
     }
-
     $resultsArray = sqlQuery($sql);
 
     $result = mysql_fetch_assoc($resultsArray);
@@ -118,14 +113,14 @@ function getArray($table, $query)
     }
     else
     {
-      $sql = "SELECT * FROM `".$type."` WHERE id = ".$id;
+      $sql = "SELECT * FROM `".$table."` WHERE id = ".$id;
     }
-
       $count = getSqlCount($sql);
 
-      $bool = ($count == 1);
-
-      return ($bool);
+      if($count == 1)
+        return true;
+      else
+        return false;
   }
   function getInputData($dataName)
   {  

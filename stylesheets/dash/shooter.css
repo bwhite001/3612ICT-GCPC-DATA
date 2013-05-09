@@ -67,11 +67,17 @@
 }
 #letterText {
     display: block;
-    width: 370px;
+    width: 365px;
     margin: 30px 10px;
-    font-size: 1.5em;
+    font-size: 1.2em;
     float: left;
     text-align: right;
+}
+#addshooter {
+    float: left;
+    text-align: center;
+    width: 200px;
+    margin-top: 30px;
 }
 .list_letter.selected:hover {
     background-color: #999;
@@ -105,9 +111,9 @@
     border-collapse: collapse;
 }
 #newshooter {
-    font-family: entypo;
-    font-size: 24px;
-    width: 24px;
+    float: right;
+    font-size: 20px;
+    font-weight: normal;
 }
 th, td{
     padding: 10px;

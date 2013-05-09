@@ -1,0 +1,26 @@
+@import url("http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css");
+
+#seriesForm {
+	width: 60%;
+	margin-left: 30%;
+	font-size: 1.3em;
+	color: #222;
+}
+#seriesForm .formTitle {
+    width: 45%;
+    margin-top: 4px;
+}
+#seriesForm .formText {
+    width: 50%;
+	
+}
+#seriesForm .formText.select {
+    width: 72.3%;
+	
+}
+.back.button {
+    float: right;
+    font-size: 0.5em;
+    margin-top: 1px;
+    padding-bottom: 6px;
+}

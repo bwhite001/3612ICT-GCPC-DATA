@@ -37,5 +37,8 @@ h1 {
 }
 .someRandomClassThatWontGetConfusedWithTheOtherClasses {
     color: #F77;
-    text-shadow: 1px 1px 2px #000;
+    font-weight: bold;
+}
+.someRandomClassThatWontGetConfusedWithTheOtherClasses.Green {
+    color: #5C5;
 }

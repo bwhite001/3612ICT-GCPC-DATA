@@ -24,13 +24,13 @@
     color: white;
     margin: 0px;
     padding: 5px;
-    background-color: #944;
-    border: solid 2px #644;
+    background-color: #F72;
+    border: solid 2px #E62;
     box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2) inset, -2px -2px 2px rgba(0, 0, 0, 0.2) inset;
 }
 .button:hover {
-    background-color: #B44;
-    border: solid 2px #844;
+    background-color: #FA6000;
+    border: solid 2px #F50;
 }
 .button:active {
     box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2) inset, 2px 2px 2px rgba(0, 0, 0, 0.2) inset;

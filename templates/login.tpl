@@ -8,9 +8,13 @@
     </head>
     <body>
         <div id="loginForm">
-            <form id="signin_form" action="dash.php" method="post">
+            <form id="signin_form" action="login.php" method="post">
                 <h1>Log in</h1>
-                <p class="someRandomClassThatWontGetConfusedWithTheOtherClasses"></p>
+                {if $isError}
+                <p class="someRandomClassThatWontGetConfusedWithTheOtherClasses">{$error}</p>
+                {else if $error != ""}
+                <p class="someRandomClassThatWontGetConfusedWithTheOtherClasses Green">{$error}</p>
+                {/if}
                 <div id="formContent">
                         <span class="entypo login">👤</span>
                         <div class="inputDiv">

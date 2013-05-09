@@ -17,14 +17,14 @@
         <span class="formTitle">Gender:</span>
 
         <select name="male" id="male" class='formText select'>
-            <option value="true">Male</option>
-            <option value="false">Female</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
         </select>
 
         <span class="formTitle">Age:</span>
         <select id='senior' name="senior" class='formText select'>
-            <option value="true">Senior</option>
-            <option value="false">Junior</option>
+            <option value="1">Senior</option>
+            <option value="0">Junior</option>
         </select>
 
         <span class="formTitle">Grade:</span>

@@ -83,7 +83,6 @@ function getShooterLetterArray()
 function getShooter($id)
 {	
 	$id = sanitiseMyStringNow($id);
-
 	if(doesExist("shooters", $id))
 	{
 		$shooter = getInfo("shooters", $id);
@@ -146,10 +145,72 @@ function addShooter($data)
 		foreach($shooter as $name => $value) {
 			unset($_SESSION[$name]);
 		}
-
+		$shooter['updated_at'] = date("Y-m-d H:i:s", time());
+		$shooter['created_at'] = date("Y-m-d H:i:s", time());
 		$sql = createQuery("shooters", $shooter);
 
 		return array(true, $sql, "$firstname $lastname");
+	}
+}
+function editShooter($data, $id)
+{
+	if(!doesExist("shooters",$id))
+	{
+		redirectToUrl("dash.php?t=s", array('error_string' => "Shooter Does Not exist!", 'error_is_good' => 'false'));
+		exit;
+	}
+
+	$valid_data = array("id","firstname","lastname","male","senior","grade","cnumber","rfid");
+	$shooter = array();
+	$hasError = false;
+	$errorSting = "There are Errors in the Form! ";
+	foreach($data as $name => $value) {
+		if(in_array($name, $valid_data))
+		{
+			if(sanitiseMyStringNow($value) == "" && !($name == "cnumber" || $name == "rfid" || $name == "id"))
+			{
+				$errorSting .= ucwords($name)." cannot be Blank ";
+				$shooter[$name] = sanitiseMyStringNow($value);
+				$hasError = true;
+			}
+			else
+			{
+				if($name == "firstname" || $name == "lastname")
+					$value = ucwords($value);
+
+				$shooter[$name] = sanitiseMyStringNow($value);
+			}
+		}
+	}
+
+	$firstname = $shooter['firstname'];
+	$lastname = $shooter['lastname'];
+	if(doesExist("-1","SELECT * FROM `shooters` WHERE firstname = '$firstname' AND lastname = '$lastname' AND id <> $id;"))
+	{
+		$hasError = true;
+		$errorSting = "The Shooter, $firstname $lastname already exists!";
+	}
+
+	if($hasError)
+	{	
+
+		foreach($shooter as $name => $value) {
+			$_SESSION[$name] = $value;
+		}
+
+		return array(false, "", $errorSting);
+
+	}
+	else
+	{
+		foreach($shooter as $name => $value) {
+			unset($_SESSION[$name]);
+		}
+		$errorSting = $firstname." ".$lastname;
+		$shooter['updated_at'] = date("Y-m-d H:i:s", time());
+		$sql = updateQuery("shooters", $id, $shooter);
+
+		return array(true, $sql, $errorSting);
 	}
 }
 ?>

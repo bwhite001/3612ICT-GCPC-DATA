@@ -1,0 +1,58 @@
+#content li {
+    display: block;
+    text-align: center;
+    background-color: #DDD;
+    width: 400px;
+    font-size: 24px;
+    padding: 16px 0px;
+    margin: 0px 23px;
+    margin-bottom: 8px;
+    border: solid 2px #BBB;
+    box-shadow: 2px 2px 2px #CCC;
+}
+#listResults {
+    float: left;
+    width: 450px;
+}
+#searchMain {
+    float: left;
+    height: 60px;
+    width: 50%;
+    background-color: #222;
+    color: #FFF;
+}
+#topSeachBox {
+    width: 900px;
+    height: 360px;
+    margin-bottom: 20px;
+}
+#magGlass {
+    font-family: entypo;
+    font-size: 60px;
+    width: 72px;
+    text-align: center;
+    display: block;
+    float: left;
+}
+#searchBox {
+    border: solid 1px #666;
+    font-size: 20px;
+    width: 354px;
+    margin: 12px;
+    padding: 5px;
+    color: #222;
+    margin-left: 0px;
+}
+#searchResults {
+    margin: 0px;
+    padding: 0px;
+    display: none;
+}
+
+#searchResultsText {
+    text-align: center;
+    font-size: 23px;
+    margin: 0px;
+    margin-top: 15px;
+    width: 100%;
+}

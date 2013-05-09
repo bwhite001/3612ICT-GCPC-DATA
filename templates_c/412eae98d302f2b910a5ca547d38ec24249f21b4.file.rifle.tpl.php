@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-09 22:34:07
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-09 22:53:13
          compiled from "./templates/dashboardTabs/rifle.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1922957501518b875a9e2209-79798388%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '412eae98d302f2b910a5ca547d38ec24249f21b4' => 
     array (
       0 => './templates/dashboardTabs/rifle.tpl',
-      1 => 1368099244,
+      1 => 1368100382,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
@@ -93,12 +93,12 @@ $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1
 			<tr>
 				<td><?php echo $_smarty_tpl->tpl_vars['w']->value;?>
 </td>
-				<td><a href='dash.php?t=pw&week=<?php echo $_smarty_tpl->tpl_vars['w']->value;?>
+				<td><a href='dash.php?t=rw&week=<?php echo $_smarty_tpl->tpl_vars['w']->value;?>
 &day=w'><?php echo $_smarty_tpl->tpl_vars['week']->value['wed'];?>
 </a></td>
 				<td><strong><?php echo $_smarty_tpl->tpl_vars['week']->value['wedc'];?>
 </strong></td>
-				<td><a href='dash.php?t=pw&week=<?php echo $_smarty_tpl->tpl_vars['w']->value;?>
+				<td><a href='dash.php?t=rw&week=<?php echo $_smarty_tpl->tpl_vars['w']->value;?>
 &day=f'><?php echo $_smarty_tpl->tpl_vars['week']->value['fri'];?>
 </a></td>
 				<td><strong><?php echo $_smarty_tpl->tpl_vars['week']->value['fric'];?>
@@ -117,7 +117,7 @@ $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1
 				<td>Presentation Night <br/> <em><?php echo $_smarty_tpl->tpl_vars['celb']->value['wed'];?>
 </em></td>
 				<td><strong>N/A</strong></td>
-				<td><a href='dash.php?t=pw&week=9&day=f'><?php echo $_smarty_tpl->tpl_vars['celb']->value['fri'];?>
+				<td><a href='dash.php?t=rw&week=9&day=f'><?php echo $_smarty_tpl->tpl_vars['celb']->value['fri'];?>
 </a></td>
 				<td><strong><?php echo $_smarty_tpl->tpl_vars['celb']->value['fric'];?>
 </strong></td>

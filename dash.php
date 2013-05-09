@@ -16,7 +16,7 @@ $series = getCurrentSeries(getInputData('current_series_id'));
 
 $all_series = getArray("series","");
 
-$selectedTab = (in_array(getInputData('t'), array("n", "s", "e", "p","r","a", "sa", "se", "ea", "ee")))? getInputData('t') : "s";
+$selectedTab = (in_array(getInputData('t'), array("n", "s", "e", "p","r","a", "sa", "se", "ea", "ee","pw")))? getInputData('t') : "s";
 
 $error_is_good = getInputData('error_is_good');
 $error_string = getInputData('error_string');
@@ -32,7 +32,7 @@ else
 }
 
 
-$template = sendDataToSmarty($navbar, $smarty, $selectedTab, $all_series);
+$template = sendDataToSmarty($navbar, $smarty, $selectedTab, $all_series, $series);
 
 $smarty->assign("error_string", $error_string);
 $smarty->assign("error_is_good", $error_is_good);
@@ -45,17 +45,50 @@ $smarty->assign("all_series", $all_series);
 
 $smarty->display("dashboardTabs/".$template.".tpl");
 
-function sendDataToSmarty($navbar, $smarty, $tab, $all_series)
+function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 {
 
 	$template = $navbar[$tab]['link'];
 	#For Pistol Weeks and Rifle Weeks
-	if($tab == "p" || $tab == "r")
+	if($tab == "p" || $tab == "r" || $tab == "pw" || $tab == "rw")
 	{
 		if(count($all_series) <= 0)
-		{
 			redirectToUrl("dash.php", array('error_string' => "Please Create a Series!", 'error_is_good' => 'false'));
-		}	
+	}
+	if($tab == "pw" || $tab == "rw")
+	{
+		$weekNumber = getInputData("week");
+		$thisUrl = ($tab == "pw") ? "p" : "r";
+		$table = ($tab == "pw") ? "rifle_scores" : "scores";
+
+		if($weekNumber > ($current_series['length']+1) || $weekNumber < 1)
+			redirectToUrl("dash.php?t=$thisUrl", array('error_string' => "Invalid Week Number", 'error_is_good' => 'false'));
+
+		$day = getInputData("day");
+
+		if($day != "w" && $day != "f")
+			$day = "w";
+
+		$type = ($tab == "pw") ? "Pistol" : "Rifle";
+
+		$date = date("Y-m-d",strtotime("+$weekNumber week", strtotime($current_series['date_started'])));
+
+		$sql = "SELECT * FROM `$table` where `date` = '$date' and series_id = ".$current_series['id'].";";
+
+		$scores = getArray("-1", $sql);
+
+		if($day == "w")
+			$weeklyDate = strtotime("+$weekNumber week", strtotime($current_series['date_started']));
+		else
+			$weeklyDate = strtotime("+2 day +$weekNumber week", strtotime($current_series['date_started']));
+
+		$smarty->assign("weekDate", $weeklyDate);
+
+		$smarty->assign("type", $type);
+
+		$smarty->assign("scores", $scores);
+
+		$template = "weekly";
 	}
 	#for Shooter Add and Edit
 	if($tab == "sa" || $tab == "se")

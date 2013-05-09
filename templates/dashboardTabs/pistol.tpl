@@ -19,9 +19,9 @@
 			{assign "week" getWeekly($current_series, $w, false)}
 			<tr>
 				<td>{$w}</td>
-				<td><a href='dash.php?t=rw&week={$w}&day=w'>{$week.wed}</a></td>
+				<td><a href='dash.php?t=pw&week={$w}&day=w'>{$week.wed}</a></td>
 				<td><strong>{$week.wedc}</strong></td>
-				<td><a href='dash.php?t=rw&week={$w}&day=f'>{$week.fri}</a></td>
+				<td><a href='dash.php?t=pw&week={$w}&day=f'>{$week.fri}</a></td>
 				<td><strong>{$week.fric}</strong></td>
 				<td><strong>{$week.total}</strong></td>
 				<td>
@@ -35,7 +35,7 @@
 				<td>-</td>
 				<td>Presentation Night <br/> <em>{$celb.wed}</em></td>
 				<td><strong>N/A</strong></td>
-				<td><a href='dash.php?t=rw&week=9&day=f'>{$celb.fri}</a></td>
+				<td><a href='dash.php?t=pw&week=9&day=f'>{$celb.fri}</a></td>
 				<td><strong>{$celb.fric}</strong></td>
 				<td><strong>N/A</strong></td>
 				<td>

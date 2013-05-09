@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-05 12:05:25
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-09 13:01:37
          compiled from "./templates/dashboardTabs/shooters/shooterForm.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:541675120517fe6731afee4-77361023%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -13,7 +13,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
     array (
       0 => '/var/www/gcpc/templates/core.tpl',
-      1 => 1367715866,
+      1 => 1368063232,
       2 => 'file',
     ),
   ),
@@ -39,7 +39,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <link rel="stylesheet" type="text/css" href="stylesheets/dash.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/dash/shooterForm.css">
         <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-        <script src="scripts/main.js"></script>
+        <script src="clientscripts/main.js"></script>
         
     </head>
     <body>

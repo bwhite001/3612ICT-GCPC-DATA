@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-09 12:47:15
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-09 20:45:41
          compiled from "./templates/dashboardTabs/series/seriesForm.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6925986325185ab292ce922-82682671%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4137d414073583362067b81a09d150602b361c99' => 
     array (
       0 => './templates/dashboardTabs/series/seriesForm.tpl',
-      1 => 1367996166,
+      1 => 1368092739,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
@@ -63,8 +63,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<?php $_smarty_tpl->tpl_vars["cleanDate"] = new Smarty_variable(date("Y-m-d",strtotime($_smarty_tpl->tpl_vars['series']->value['date_started'])), null, 0);?>
 	<?php $_smarty_tpl->tpl_vars["currentYear"] = new Smarty_variable(date("Y",strtotime($_smarty_tpl->tpl_vars['series']->value['date_started'])), null, 0);?>
     <h2><?php echo $_smarty_tpl->tpl_vars['type']->value;?>
- Series - Series <?php echo $_smarty_tpl->tpl_vars['series']->value['snumber'];?>
- <?php echo $_smarty_tpl->tpl_vars['currentYear']->value;?>
+ Series - Series <?php echo $_smarty_tpl->tpl_vars['series']->value;?>
 </h2>
 <?php }?>
 <form action='action.php' method='post' id='seriesForm'>
@@ -72,13 +71,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <input class='formText' type="number" name="snumber" value='<?php echo $_smarty_tpl->tpl_vars['series']->value['snumber'];?>
 '>
     <span class="formTitle">Start Date (YYYY-MM-DD):</span>
-    <input class='formText' type="text" name="date_started" id="datepicker" value='<?php echo $_smarty_tpl->tpl_vars['cleanDate']->value;?>
+    <input class='formText' type="text" name="date_started" id="datepicker" value='<?php echo $_smarty_tpl->tpl_vars['series']->value['date_started'];?>
 '>
     <span class="formTitle">Length: (weeks)</span>
     <input class='formText' type="number" name="length" value='<?php echo $_smarty_tpl->tpl_vars['series']->value['length'];?>
 '>
     <?php if ($_smarty_tpl->tpl_vars['type']->value=="Edit"){?>
-        <input type='hidden' name='id' value='<?php echo $_smarty_tpl->tpl_vars['shooter']->value['id'];?>
+        <input type='hidden' name='id' value='<?php echo $_smarty_tpl->tpl_vars['series']->value['id'];?>
 '>
         <input type='hidden' name='code' value='ee'>
     <?php }else{ ?>
@@ -93,8 +92,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <span style="display:block; clear:both; height: 20px;"></span>
 <script type="text/javascript">
   $(function() {
-    $( "#datepicker" ).datepicker();
-    $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+    $("#datepicker").datepicker(
+    {
+        dateFormat: 'yy-mm-dd',
+        defaultDate: '<?php echo $_smarty_tpl->tpl_vars['cleanDate']->value;?>
+'
+    });
   });
 </script>
 

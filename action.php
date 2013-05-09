@@ -4,7 +4,9 @@
 
 	session_start();
 
+	require 'libs/smarty/libs/Smarty.class.php';
 	include 'includes/defs.php';
+
 	$currentUser = checkLogin(true);
 	
 	$current_code = getInputData('code');
@@ -56,6 +58,9 @@
 			break;
 		case 'ea':
 			echo addSeries(getInputData('snumber'), getInputData('date_started'), getInputData('length'), $return_url);
+			break;
+		case 'ee':
+			echo updateSeries(getInputData('id'), getInputData('snumber'), getInputData('date_started'), getInputData('length'), $return_url);
 			break;
 		default:
 			if($current_code != "")

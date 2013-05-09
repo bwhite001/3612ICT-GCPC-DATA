@@ -20,6 +20,7 @@ $selectedTab = (in_array(getInputData('t'), array("n", "s", "e", "p","r","a", "s
 
 $error_is_good = getInputData('error_is_good');
 $error_string = getInputData('error_string');
+
 if(getInputData("uri_re") == "")
 {
 	$currentGetPrams = ($_SERVER['QUERY_STRING'] == "") ? "" : "?".$_SERVER['QUERY_STRING'];
@@ -31,7 +32,7 @@ else
 }
 
 
-$template = sendDataToSmarty($navbar, $smarty, $selectedTab);
+$template = sendDataToSmarty($navbar, $smarty, $selectedTab, $all_series);
 
 $smarty->assign("error_string", $error_string);
 $smarty->assign("error_is_good", $error_is_good);
@@ -44,11 +45,18 @@ $smarty->assign("all_series", $all_series);
 
 $smarty->display("dashboardTabs/".$template.".tpl");
 
-function sendDataToSmarty($navbar, $smarty, $tab)
+function sendDataToSmarty($navbar, $smarty, $tab, $all_series)
 {
 
 	$template = $navbar[$tab]['link'];
-
+	#For Pistol Weeks and Rifle Weeks
+	if($tab == "p" || $tab == "r")
+	{
+		if(count($all_series) <= 0)
+		{
+			redirectToUrl("dash.php", array('error_string' => "Please Create a Series!", 'error_is_good' => 'false'));
+		}	
+	}
 	#for Shooter Add and Edit
 	if($tab == "sa" || $tab == "se")
 	{
@@ -103,7 +111,12 @@ function sendDataToSmarty($navbar, $smarty, $tab)
 			$smarty->assign("currentYear", $currentYear);
 			$smarty->assign("currentPage", $currentPage);
 			$smarty->assign("totalPages", $totalPages);
-
+			break;
+		case 'p':
+			$navbar[$tab]['selected'] = 1;
+			break;
+		case 'r':
+			$navbar[$tab]['selected'] = 1;
 			break;
 		#shooter Edit;
 		case 'se':
@@ -136,9 +149,10 @@ function sendDataToSmarty($navbar, $smarty, $tab)
 			$series = getSeries(getInputData('id'));
 
 			if($series == "-1") {
-				redirectToUrl("dash.php?t=e", array('error_string' => "Series Does Not exist!", 'error_is_good' => 'false'));
+				echo redirectToUrl("dash.php?t=e", array('error_string' => "Series Does Not exist!", 'error_is_good' => 'false'));
 				exit;
 			}
+			$smarty->assign("series", $series);
 
 			$template = "series/seriesForm";
 			break;

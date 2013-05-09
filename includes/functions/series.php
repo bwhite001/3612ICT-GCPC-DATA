@@ -2,6 +2,17 @@
 	function getCurrentSeries($id)
 	{
 		$series = getSeries($id);
+
+		if($series == "-1")
+		{
+			$series = getInfo("-1", "SELECT * FROM series WHERE `date_started` = (SELECT MAX(`date_started`) FROM series)");
+
+			if(!doesExist("series", $series['id']))
+			{
+				$series = "-1";
+			}
+
+		}
 		if(isset($series['id']))
 		{
 			changeSeries($series['id']);
@@ -22,14 +33,7 @@
 		}
 		else
 		{
-			//If does not exsists Pick Recent;
-			$series = getInfo("-1", "SELECT * FROM series WHERE `date_started` = (SELECT MAX(`date_started`) FROM series)");
-
-			if(!doesExist("series", $series['id']))
-			{
-				//If No Series exsists
 				$series = "-1";
-			}
 		}
 		return $series;
 	}
@@ -122,8 +126,8 @@
 		else
 		{
 			$dates = getSeriesDates($date_started, $length);
-			$errorString = "The Series $snumber was successfully added! <br /> With start date of ".$dates['s']." and a finish date of ".$dates['f'];
-			$redirect = "dash.php?t=ea";
+			$errorString = "<b>The Series $snumber was successfully added!</b> <br /> With start date of ".$dates['s']." and a finish date of ".$dates['f'];
+			$redirect = $return_url;
 
 			echo createQuery("series", $series);
 
@@ -131,7 +135,54 @@
 		$error_is_good = ($containsError) ? "false" : "true";
 		redirectToUrl($redirect, array('error_string' => $errorString, 'error_is_good' => $error_is_good));
 	}
+	function updateSeries($id, $snumber, $date_started, $length, $return_url)
+	{
+		$id = sanitiseMyStringNow($id);
 
+		if(!doesExist("series", $id))
+		{
+			echo redirectToUrl("dash.php?t=e", array('error_string' => "Series Does Not exist!", 'error_is_good' => 'false'));
+			exit;
+		}
+
+		$snumber = sanitiseMyStringNow($snumber);
+		$date_started = sanitiseMyStringNow($date_started);
+		$length = sanitiseMyStringNow($length);
+
+		$series = array('snumber' => $snumber, 'date_started' => $date_started, 'length' => $length, 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s"));
+
+		list($snumberBool, $date_startedBool, $lengthBool, $exsists) = validateSeries($snumber, $date_started, $length, true, $updateid);
+
+		$containsError = ($snumberBool || $date_startedBool || $lengthBool || $exsists);
+
+		if($containsError)
+		{
+			$errorString = "<b>Error In Form</b> <br/> ";
+
+			if($snumberBool)
+				$errorString .= "The Series Number Must be a Number! <br/>";
+			if($lengthBool)
+				$errorString .= "The Length Must be a Number! <br/>";
+
+			if($date_startedBool)
+				$errorString .= "Date Started must be a Valid Date and Start On Wednesday! <br/>";
+
+			if($exsists)
+				$errorString .= "The Series already exsists for that year! <br/>";
+
+			$redirect = "dash.php?t=ee&id=".$id;
+		}
+		else
+		{
+			$dates = getSeriesDates($date_started, $length);
+			$errorString = "<b>The Series $snumber was successfully updated!</b> <br /> With start date of ".$dates['s']." and a finish date of ".$dates['f'];
+			$redirect = $return_url;
+			echo updateQuery("series", $id, $series);
+
+		}
+		$error_is_good = ($containsError) ? "false" : "true";
+		redirectToUrl($redirect, array('error_string' => $errorString, 'error_is_good' => $error_is_good));
+	}
 	function validateSeries($snumber, $date_started, $length, $update, $updateid)
 	{
 		$snumberBool = false;

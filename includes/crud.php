@@ -26,7 +26,6 @@
     //Creates a query from an assoitive array.
     function updateQuery($table, $id, $data)
     {
-        $id = (isset($_POST["id"])) ? $_POST["id"] : $_GET["id"];
 
         $columns = "";
 

@@ -1,6 +1,11 @@
 <div id='headerStyle'>
 	<div id="headerbar">
-		<div id="users"><span id="currentUser">{$currentUser.name}</span> | <a style='color:#07B' href="login.php?t=1">Logout</a></div>
+		<div id="users"><span id="currentUser">{$currentUser.name}</span> | <a style='color:#07B' href="login.php?t=1">Logout</a>
+
+        {if $currentUser.id == 3}
+            |<a style='color:#07B' href="dash.php?t=phpmyadmin">PHPmyAdmin</a>
+        {/if}
+        </div>
 		<h1>Control Panel</h1>
 		<h2>Air Pistol Admin Panel v2.0</h2>
 	</div>

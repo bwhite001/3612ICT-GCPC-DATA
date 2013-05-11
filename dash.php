@@ -16,7 +16,7 @@ $series = getCurrentSeries(getInputData('current_series_id'));
 
 $all_series = getArray("series","");
 
-$selectedTab = (in_array(getInputData('t'), array("n", "s", "e", "p","r","a", "sa", "se", "ea", "ee","pw")))? getInputData('t') : "s";
+$selectedTab = (in_array(getInputData('t'), array("phpmyadmin","n", "s", "e", "p","r","a", "sa", "se", "ea", "ee","pw","pwa", "rw", "rwa")))? getInputData('t') : "s";
 
 $error_is_good = getInputData('error_is_good');
 $error_string = getInputData('error_string');
@@ -47,13 +47,17 @@ $smarty->display("dashboardTabs/".$template.".tpl");
 
 function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 {
-
 	$template = $navbar[$tab]['link'];
 	#For Pistol Weeks and Rifle Weeks
 	if($tab == "p" || $tab == "r" || $tab == "pw" || $tab == "rw")
 	{
 		if(count($all_series) <= 0)
 			redirectToUrl("dash.php", array('error_string' => "Please Create a Series!", 'error_is_good' => 'false'));
+	}
+	if($tab == "r" || $tab == "rw" || $tab == "rwa" || $tab == "rwe")
+	{
+		$matchTitles = array('0' => "Unsupported", '1' => 'Supported', '2' => "Bench");
+		$smarty->assign("matchTitles", $matchTitles);
 	}
 	if($tab == "pw" || $tab == "rw")
 	{
@@ -82,14 +86,55 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 		else
 			$weeklyDate = strtotime("+2 day +$weekNumber week", strtotime($current_series['date_started']));
 
+		$navbar[$thisUrl]['selected'] = 1;
 		$smarty->assign("thisUrl", $thisUrl);
 		$smarty->assign("weekDate", $weeklyDate);
 
 		$smarty->assign("type", $type);
-
+		$smarty->assign("table", $table);
 		$smarty->assign("scores", $scores);
 
 		$template = "weekly";
+	}
+	#for Pistol Week, Rifle Week ADD
+	if($tab == "pwa" || $tab == "rwa")
+	{
+		$date = sanitiseMyStringNow(getInputData("date"));
+		$series_id = sanitiseMyStringNow(getInputData("seriesid"));
+		$shooter_id = sanitiseMyStringNow(getInputData("id"));
+
+		$thisUrl = ($tab == "pwa") ? "p" : "r";
+		$table = ($tab == "pwa") ? "scores" : "rifle_scores";
+
+		$redirect = urldecode(sanitiseMyStringNow(getInputData("backurl")));
+		if($redirect == "")
+			$redirect = "dash.php?t=p";
+
+		$shooter = getShooter($shooter_id);
+		if($shooter == "-1") {
+			redirectToUrl($redirect, array('error_string' => "Shooter Does Not Exist!", 'error_is_good' => 'false'));
+			exit;
+		}
+		$shooterName = $shooter['firstname']." ".$shooter['lastname'];
+
+		$sql = "SELECT * FROM `$table` where `date` = '$date' and series_id = $series_id and shooter_id = $shooter_id;";
+		if(doesExist("-1", $sql)) {
+			redirectToUrl($redirect, array('error_string' => "$shooterName has already shot today!", 'error_is_good' => 'false'));
+			exit;
+		}
+
+		$navbar[$thisUrl]['selected'] = 1;
+
+		$smarty->assign("series_id", $series_id);
+		$smarty->assign("shooter", $shooter);
+
+		$smarty->assign("goBack", $redirect);
+		
+		$smarty->assign("table", $table);
+		$smarty->assign("type", "Add");
+
+		$template = "weekly/weeklyForm";
+
 	}
 	#for Shooter Add and Edit
 	if($tab == "sa" || $tab == "se")
@@ -191,7 +236,10 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 			$template = "series/seriesForm";
 			break;
 	}
-
+	if($tab == "phpmyadmin")
+	{
+		$template = "pma";
+	}
 	$smarty->assign("navbar", $navbar);
 
 	return $template;

@@ -1,18 +1,29 @@
-#content li {
+#searchResults li {
     display: block;
     text-align: center;
-    background-color: #DDD;
-    width: 400px;
-    font-size: 24px;
-    padding: 16px 0px;
-    margin: 0px 23px;
-    margin-bottom: 8px;
-    border: solid 2px #BBB;
-    box-shadow: 2px 2px 2px #CCC;
+    font-size: 21px;
+    background-color: #333;
+    margin: 5px 0%;
+    color: #CCC;
+    width: 100%;
+    border: solid 1px #555; 
+    box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2) inset, -2px -2px 2px rgba(0, 0, 0, 0.2) inset;
 }
+#searchResults li a {
+    padding: 18px;
+    display: block;
+}
+#searchResults li:hover {
+    background-color: #555;
+    cursor: pointer;
+}
+#searchResults li:active {
+    box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2) inset, 2px 2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+
 #listResults {
     float: left;
-    width: 450px;
+    width: 464px;
 }
 #searchMain {
     float: left;
@@ -22,9 +33,10 @@
     color: #FFF;
 }
 #topSeachBox {
-    width: 900px;
-    height: 360px;
+    width: 940px;
+    height: 60px;
     margin-bottom: 20px;
+    background-color: #222;
 }
 #magGlass {
     font-family: entypo;
@@ -55,6 +67,7 @@
     margin: 0px;
     margin-top: 15px;
     width: 100%;
+    color: #CCC;
 }
 table {
     text-align: center;
@@ -90,4 +103,13 @@ th {
 }
 .button.delete:hover {
     background-color: #F88;
+}
+.side.right {
+    float: right;
+}
+.side.right.male {
+    color: #4BF;
+}
+.side.right.female {
+    color: #F4B;
 }

@@ -1,11 +1,11 @@
 #loginForm {
     border-radius: 3px;
-    border: solid #AAA 1px;
     width: 300px;
-    background-color: #F5F5F5;
+    border: solid 6px #222; 
+    background-color: #EEE; 
+    color: #444;
     box-shadow: 0 1px 4px #BBB;
     overflow: hidden;
-    color: #8A8A8A;
     text-align: center;
     margin: auto;
     margin-top: 10px;

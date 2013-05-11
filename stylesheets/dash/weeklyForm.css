@@ -1,0 +1,17 @@
+#weeklyForm {
+	width: 60%;
+	margin-left: 30%;
+	font-size: 1.3em;
+	color: #222;
+}
+#weeklyForm .formTitle {
+    width: 45%;
+    margin-top: 4px;
+}
+#weeklyForm .formText {
+    width: 50%;
+	
+}
+#weeklyForm .formText.select {
+    width: 72.3%;
+	

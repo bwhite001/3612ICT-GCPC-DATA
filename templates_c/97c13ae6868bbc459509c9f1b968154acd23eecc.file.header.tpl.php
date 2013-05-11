@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-08 11:23:51
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-12 00:11:19
          compiled from "./templates/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2097426510517e68d90a9f84-81127902%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97c13ae6868bbc459509c9f1b968154acd23eecc' => 
     array (
       0 => './templates/header.tpl',
-      1 => 1367972628,
+      1 => 1368277877,
       2 => 'file',
     ),
   ),
@@ -34,7 +34,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_517e68d90aac65_14832670')) {function content_517e68d90aac65_14832670($_smarty_tpl) {?><div id='headerStyle'>
 	<div id="headerbar">
 		<div id="users"><span id="currentUser"><?php echo $_smarty_tpl->tpl_vars['currentUser']->value['name'];?>
-</span> | <a style='color:#07B' href="login.php?t=1">Logout</a></div>
+</span> | <a style='color:#07B' href="login.php?t=1">Logout</a>
+
+        <?php if ($_smarty_tpl->tpl_vars['currentUser']->value['id']==3){?>
+            |<a style='color:#07B' href="dash.php?t=phpmyadmin">PHPmyAdmin</a>
+        <?php }?>
+        </div>
 		<h1>Control Panel</h1>
 		<h2>Air Pistol Admin Panel v2.0</h2>
 	</div>

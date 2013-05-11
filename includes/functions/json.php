@@ -22,6 +22,8 @@
 			$outArr['length'] = $count;
 			$outArr['location'] = sanitiseMyStringNow(getInputData('location'));
 			$outArr['backUrl'] = sanitiseMyStringNow(getInputData('backurl'));
+			$outArr['date'] = sanitiseMyStringNow(getInputData('date'));
+			$outArr['seriesid'] = sanitiseMyStringNow(getInputData('seriesid'));
 			$outArr['shooters'] = $shooters;
 			header('Content-type: text/json');
 			return json_encode($outArr);

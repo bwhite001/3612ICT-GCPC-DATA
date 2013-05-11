@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-11 12:25:21
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-12 00:05:20
          compiled from "./templates/dashboardTabs/weekly.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2074431478518b904b667299-42543098%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ff758a374125be99dfa9c2e3f75114b86d386084' => 
     array (
       0 => './templates/dashboardTabs/weekly.tpl',
-      1 => 1368235518,
+      1 => 1368277518,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
@@ -55,21 +55,41 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <?php }?>
                 <div id='tabContent'>
                     
+	<?php if ($_smarty_tpl->tpl_vars['type']->value=="Rifle"){?>
+		<style type="text/css">
+			#content h1 {
+				background-color: #090;
+			}
+			#content h2 {
+				background-color: #0C0;
+			}
+			#currentSeries {
+				background-color: #5F7;
+				border: solid 1px #0F3;
+				color: #000;
+			}
+		</style>
+	<?php }?>
 	<?php $_smarty_tpl->tpl_vars["cleanDate"] = new Smarty_variable(date("D jS M",$_smarty_tpl->tpl_vars['weekDate']->value), null, 0);?>
-
-	<h1>Weekly Scoring For <?php echo $_smarty_tpl->tpl_vars['cleanDate']->value;?>
+	<?php $_smarty_tpl->tpl_vars["checkDate"] = new Smarty_variable(date("Y-m-d",$_smarty_tpl->tpl_vars['weekDate']->value), null, 0);?>
+	<h1><em><?php echo $_smarty_tpl->tpl_vars['type']->value;?>
+</em> Weekly Scoring For <?php echo $_smarty_tpl->tpl_vars['cleanDate']->value;?>
  <a class='button' href='dash.php?t=<?php echo $_smarty_tpl->tpl_vars['thisUrl']->value;?>
 'style="font-size: 0.5em;float: right;margin-top: 2px;">Cancel</a></h1>
+
+
 	<div id='topSeachBox' style='height: 60px'>
 		<div id='searchMain'>
 			<span id='magGlass'>&#128269;</span>
 			<?php if ($_smarty_tpl->tpl_vars['type']->value=="Pistol"){?>
-				<input type='text' id='searchBox' onBlur="search('pwa','<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
-')" onKeyup="search('pwa','<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+				<input type='text' id='searchBox' onKeyup="search('pwa','<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+', '<?php echo $_smarty_tpl->tpl_vars['checkDate']->value;?>
+', '<?php echo $_smarty_tpl->tpl_vars['current_series']->value['id'];?>
 ')">
 			<?php }else{ ?>
-				<input type='text' id='searchBox' onBlur="search('rwa','<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
-')" onKeyup="search('rwa','<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+				<input type='text' id='searchBox' onKeyup="search('rwa','<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+', '<?php echo $_smarty_tpl->tpl_vars['checkDate']->value;?>
+', '<?php echo $_smarty_tpl->tpl_vars['current_series']->value['id'];?>
 ')">
 			<?php }?>
 		</div>
@@ -97,12 +117,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 foreach ($_from as $_smarty_tpl->tpl_vars['score']->key => $_smarty_tpl->tpl_vars['score']->value){
 $_smarty_tpl->tpl_vars['score']->_loop = true;
 ?>
-				<?php if ($_smarty_tpl->tpl_vars['score']->value['handicap']<0){?>
-					<?php $_smarty_tpl->tpl_vars["sString"] = new Smarty_variable("(Supported)", null, 0);?>
-					<?php $_smarty_tpl->tpl_vars["hcap"] = new Smarty_variable("N/A", null, 0);?>
+				<?php if ($_smarty_tpl->tpl_vars['type']->value=="Pistol"){?>
+					<?php if ($_smarty_tpl->tpl_vars['score']->value['handicap']<0){?>
+						<?php $_smarty_tpl->tpl_vars["sString"] = new Smarty_variable("(Supported)", null, 0);?>
+						<?php $_smarty_tpl->tpl_vars["hcap"] = new Smarty_variable("N/A", null, 0);?>
+					<?php }else{ ?>
+						<?php $_smarty_tpl->tpl_vars["hcap"] = new Smarty_variable($_smarty_tpl->tpl_vars['score']->value['handicap'], null, 0);?>
+
+						<?php $_smarty_tpl->tpl_vars["sString"] = new Smarty_variable('', null, 0);?>
+					<?php }?>
 				<?php }else{ ?>
-					<?php $_smarty_tpl->tpl_vars["hcap"] = new Smarty_variable($_smarty_tpl->tpl_vars['score']->value['handicap'], null, 0);?>
-					<?php $_smarty_tpl->tpl_vars["sString"] = new Smarty_variable('', null, 0);?>
+					<?php $_smarty_tpl->tpl_vars["hcap"] = new Smarty_variable($_smarty_tpl->tpl_vars['score']->value['match'], null, 0);?>
 				<?php }?>
 				<tr>
 					<td><?php echo $_smarty_tpl->tpl_vars['score']->value['name'];?>
@@ -120,7 +145,8 @@ $_smarty_tpl->tpl_vars['score']->_loop = true;
 						<td><?php echo $_smarty_tpl->tpl_vars['hcap']->value;?>
 </td>
 					<?php }else{ ?>
-						<td>Match Type</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['matchTitles']->value[$_smarty_tpl->tpl_vars['hcap']->value];?>
+</td>
 					<?php }?>
 					<td><a class='button edit'>Edit</a></td>
 					<td><a class='button delete'>Delete</a></td>

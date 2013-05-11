@@ -3,16 +3,33 @@
 {block name=template}weeklyScores{/block}
 {block name=js}<script src="clientscripts/weekly.js"></script>{/block}
 {block name=body}
+	{if $type == "Rifle"}
+		<style type="text/css">
+			#content h1 {
+				background-color: #090;
+			}
+			#content h2 {
+				background-color: #0C0;
+			}
+			#currentSeries {
+				background-color: #5F7;
+				border: solid 1px #0F3;
+				color: #000;
+			}
+		</style>
+	{/if}
 	{assign "cleanDate" date("D jS M",$weekDate)}
+	{assign "checkDate" date("Y-m-d",$weekDate)}
+	<h1><em>{$type}</em> Weekly Scoring For {$cleanDate} <a class='button' href='dash.php?t={$thisUrl}'style="font-size: 0.5em;float: right;margin-top: 2px;">Cancel</a></h1>
 
-	<h1>Weekly Scoring For {$cleanDate} <a class='button' href='dash.php?t={$thisUrl}'style="font-size: 0.5em;float: right;margin-top: 2px;">Cancel</a></h1>
+
 	<div id='topSeachBox' style='height: 60px'>
 		<div id='searchMain'>
 			<span id='magGlass'>&#128269;</span>
 			{if $type == "Pistol"}
-				<input type='text' id='searchBox' onBlur="search('pwa','{$current_uri}')" onKeyup="search('pwa','{$current_uri}')">
+				<input type='text' id='searchBox' onKeyup="search('pwa','{$current_uri}', '{$checkDate}', '{$current_series.id}')">
 			{else}
-				<input type='text' id='searchBox' onBlur="search('rwa','{$current_uri}')" onKeyup="search('rwa','{$current_uri}')">
+				<input type='text' id='searchBox' onKeyup="search('rwa','{$current_uri}', '{$checkDate}', '{$current_series.id}')">
 			{/if}
 		</div>
 		<div id='listResults'>
@@ -35,12 +52,17 @@
 				<th colspan='2' width='30%'>Edit / Delete</th>
 			</tr>
 			{foreach from=$scores item=score}
-				{if $score.handicap < 0}
-					{assign "sString" "(Supported)"}
-					{assign "hcap" "N/A"}
+				{if $type == "Pistol"}
+					{if $score.handicap < 0}
+						{assign "sString" "(Supported)"}
+						{assign "hcap" "N/A"}
+					{else}
+						{assign "hcap" $score.handicap}
+
+						{assign "sString" ""}
+					{/if}
 				{else}
-					{assign "hcap" $score.handicap}
-					{assign "sString" ""}
+					{assign "hcap" $score.match}
 				{/if}
 				<tr>
 					<td>{$score.name} {$sString} 
@@ -54,7 +76,7 @@
 					{if $type == "Pistol"}
 						<td>{$hcap}</td>
 					{else}
-						<td>Match Type</td>
+						<td>{$matchTitles[$hcap]}</td>
 					{/if}
 					<td><a class='button edit'>Edit</a></td>
 					<td><a class='button delete'>Delete</a></td>

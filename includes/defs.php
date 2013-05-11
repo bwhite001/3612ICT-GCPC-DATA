@@ -8,6 +8,8 @@ require "functions/shooters.php";
 require "functions/series.php";
 require "functions/accounts.php";
 require "functions/scores.php";
+require "functions/json.php";
+
 function nicetime($date)
     {
         if(empty($date)) {

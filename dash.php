@@ -59,9 +59,10 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 	{
 		$weekNumber = getInputData("week");
 		$thisUrl = ($tab == "pw") ? "p" : "r";
-		$table = ($tab == "pw") ? "rifle_scores" : "scores";
+		$table = ($tab == "pw") ? "scores" : "rifle_scores";
 
-		if($weekNumber > ($current_series['length']+1) || $weekNumber < 1)
+		$weekNumber = $weekNumber -1;
+		if($weekNumber > ($current_series['length']) || $weekNumber < 0)
 			redirectToUrl("dash.php?t=$thisUrl", array('error_string' => "Invalid Week Number", 'error_is_good' => 'false'));
 
 		$day = getInputData("day");
@@ -73,8 +74,7 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 
 		$date = date("Y-m-d",strtotime("+$weekNumber week", strtotime($current_series['date_started'])));
 
-		$sql = "SELECT * FROM `$table` where `date` = '$date' and series_id = ".$current_series['id'].";";
-
+		$sql = "SELECT $table.*, CONCAT(shooters.firstname, ' ',shooters.lastname) as name, `shooters`.male AS male FROM `$table`, `shooters` WHERE `date` = '$date' and series_id = ".$current_series['id']." and`$table`.shooter_id = `shooters`.id order by `shooters`.firstname";
 		$scores = getArray("-1", $sql);
 
 		if($day == "w")
@@ -82,6 +82,7 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 		else
 			$weeklyDate = strtotime("+2 day +$weekNumber week", strtotime($current_series['date_started']));
 
+		$smarty->assign("thisUrl", $thisUrl);
 		$smarty->assign("weekDate", $weeklyDate);
 
 		$smarty->assign("type", $type);

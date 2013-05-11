@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-10 00:10:21
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-11 12:25:21
          compiled from "./templates/dashboardTabs/weekly.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2074431478518b904b667299-42543098%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ff758a374125be99dfa9c2e3f75114b86d386084' => 
     array (
       0 => './templates/dashboardTabs/weekly.tpl',
-      1 => 1368105019,
+      1 => 1368235518,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
@@ -41,7 +41,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <link rel="stylesheet" type="text/css" href="stylesheets/dash/weeklyScores.css">
         <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script src="clientscripts/main.js"></script>
-        
+        <script src="clientscripts/weekly.js"></script>
     </head>
     <body>
         <div id='wrapper'>
@@ -58,11 +58,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<?php $_smarty_tpl->tpl_vars["cleanDate"] = new Smarty_variable(date("D jS M",$_smarty_tpl->tpl_vars['weekDate']->value), null, 0);?>
 
 	<h1>Weekly Scoring For <?php echo $_smarty_tpl->tpl_vars['cleanDate']->value;?>
-</h1>
+ <a class='button' href='dash.php?t=<?php echo $_smarty_tpl->tpl_vars['thisUrl']->value;?>
+'style="font-size: 0.5em;float: right;margin-top: 2px;">Cancel</a></h1>
 	<div id='topSeachBox' style='height: 60px'>
 		<div id='searchMain'>
 			<span id='magGlass'>&#128269;</span>
-			<input type='text' id='searchBox'>
+			<?php if ($_smarty_tpl->tpl_vars['type']->value=="Pistol"){?>
+				<input type='text' id='searchBox' onBlur="search('pwa','<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+')" onKeyup="search('pwa','<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+')">
+			<?php }else{ ?>
+				<input type='text' id='searchBox' onBlur="search('rwa','<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+')" onKeyup="search('rwa','<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+')">
+			<?php }?>
 		</div>
 		<div id='listResults'>
 			<p id="searchResultsText">Search For Shooters</p>
@@ -72,6 +81,53 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 	<h2>Current Scores</h2>
 	<?php if (count($_smarty_tpl->tpl_vars['scores']->value)>0){?>
+		<table>
+			<tr>
+				<th width='40%'>Name</th>
+				<th width='10%'>Score</th>
+				<?php if ($_smarty_tpl->tpl_vars['type']->value=="Pistol"){?>
+					<th width='10%'>Handicap</th>
+				<?php }else{ ?>
+					<th width='30%'>Match Type</th>
+				<?php }?>
+				<th colspan='2' width='30%'>Edit / Delete</th>
+			</tr>
+			<?php  $_smarty_tpl->tpl_vars['score'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['score']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['scores']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['score']->key => $_smarty_tpl->tpl_vars['score']->value){
+$_smarty_tpl->tpl_vars['score']->_loop = true;
+?>
+				<?php if ($_smarty_tpl->tpl_vars['score']->value['handicap']<0){?>
+					<?php $_smarty_tpl->tpl_vars["sString"] = new Smarty_variable("(Supported)", null, 0);?>
+					<?php $_smarty_tpl->tpl_vars["hcap"] = new Smarty_variable("N/A", null, 0);?>
+				<?php }else{ ?>
+					<?php $_smarty_tpl->tpl_vars["hcap"] = new Smarty_variable($_smarty_tpl->tpl_vars['score']->value['handicap'], null, 0);?>
+					<?php $_smarty_tpl->tpl_vars["sString"] = new Smarty_variable('', null, 0);?>
+				<?php }?>
+				<tr>
+					<td><?php echo $_smarty_tpl->tpl_vars['score']->value['name'];?>
+ <?php echo $_smarty_tpl->tpl_vars['sString']->value;?>
+ 
+						<?php if ($_smarty_tpl->tpl_vars['score']->value['male']=='1'){?>
+							<span class='gender male'>Male</span>
+						<?php }else{ ?>
+							<span class='gender female'>Female</span>
+						<?php }?>
+					</td>
+					<td><?php echo $_smarty_tpl->tpl_vars['score']->value['score'];?>
+</td>
+					<?php if ($_smarty_tpl->tpl_vars['type']->value=="Pistol"){?>
+						<td><?php echo $_smarty_tpl->tpl_vars['hcap']->value;?>
+</td>
+					<?php }else{ ?>
+						<td>Match Type</td>
+					<?php }?>
+					<td><a class='button edit'>Edit</a></td>
+					<td><a class='button delete'>Delete</a></td>
+
+				</tr>
+			<?php } ?>
+		</table>
 	<?php }else{ ?>
 	<p style="text-align: center;font-size: 23px;">There Are No Scores for Today<p>
 	<?php }?>

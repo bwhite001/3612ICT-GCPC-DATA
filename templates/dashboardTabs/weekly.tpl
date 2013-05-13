@@ -78,12 +78,25 @@
 					{else}
 						<td>{$matchTitles[$hcap]}</td>
 					{/if}
-					<td><a class='button edit'>Edit</a></td>
-					<td><a class='button delete'>Delete</a></td>
 
+					{assign "uri" urlencode($current_uri)}
+					<td><a class='button edit' href='dash.php?t={$thisUrl}we&id={$score.id}&backurl={$uri}'>Edit</a></td>
+
+					{if $type == "Pistol"}
+						<td><a class='button delete' href='action.php?code=wd&id={$score.id}&table=scores&backurl={$uri}'>Delete</a></td>
+					{else}
+						<td><a class='button delete' href='action.php?code=wd&id={$score.id}&table=rifle_scores&backurl={$uri}'>Delete</a></td>
+					{/if}
 				</tr>
 			{/foreach}
 		</table>
+		<script type="text/javascript">
+			$(".button.delete").click(function (event) {
+				if (!confirm('Are you sure you want to delete this score?')) {
+					event.preventDefault();
+				}
+			});
+		</script>
 	{else}
 	<h2>No Current Scores</h2>
 	<p style="text-align: center;font-size: 23px;">There Are No Scores for Today<p>

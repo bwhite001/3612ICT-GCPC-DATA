@@ -22,17 +22,57 @@
 	<form action='action.php' method='post' id='weeklyForm'>
 		{if $table=='scores'}
 			<span class="formTitle">Handicap:</span>
-	        <input class='formText' type="text" name="handicap" value='{$score.handicap}'>
+	        <input class='formText' id='handicaptxt' type="number" name="handicap" old='{$score.handicap}' value='{$score.handicap}'>
+            <div id='hiddenInput'></div>
+            <div id='supported'>
+                <span class="formTitle">Supported:</span>
+                <input class="formText" type="checkbox" id="suportedCheck" style="width: 24px;margin-right: 48%;height: 24px;margin-top: 5px;margin-left: 0px;">
+                <script type="text/javascript">
+                $('#suportedCheck').mousedown(function() {
+                        if (!$(this).is(':checked')) {
+                            $("#handicaptxt").attr("disabled", "disabled"); 
+                            $("#handicaptxt").attr("old", $("#handicaptxt").val());
+                            $("#handicaptxt").val("-1");
+                            $("#hiddenInput").html("<input type='hidden' name='handicap' value='-1'>");
+                        }
+                        else {
+                            $("#handicaptxt").removeAttr("disabled");
+                            $("#handicaptxt").val($("#handicaptxt").attr("old"));
+                            $("#hiddenInput").html("");
+                        }
+
+                    });
+                {if $score.handicap == -1}
+                    $("#handicaptxt").attr("disabled", "disabled"); 
+                    $("#handicaptxt").attr("old", $("#handicaptxt").val());
+                    $("#handicaptxt").val("-1");
+
+                    $("#hiddenInput").html("<input type='hidden' name='handicap' value='-1'>");
+
+                    $("#suportedCheck").attr("checked", "checked");
+                {/if}
+                </script>
+            </div>
         {else}
         	<span class="formTitle">Match:</span>
-	        <select class='formText select'>
-                {for $i=0 to 2}
-                <option value='{$i}'>{$matchTitles[$i]}</option>
-                {/for}
+	        <select class='formText select' name='handicap'>
+                {if $type == "Edit"}
+                    {for $i=0 to 2}
+                        {if $score.match == $i}
+                            <option value='{$i}' selected>{$matchTitles[$i]}</option>
+                        {else}
+                            <option value='{$i}'>{$matchTitles[$i]}</option>
+                        {/if}
+                    {/for}
+                {else}
+                    {for $i=0 to 2}
+                        <option value='{$i}'>{$matchTitles[$i]}</option>
+                    {/for}
+                {/if}
 	        </select>
         {/if}
         <span class="formTitle">Score:</span>
-        <input class='formText' type="text" name="Handicap" value='{$score.handicap}'>
+        <input class='formText' type="number" name="score" value='{$score.score}'>
         <input type='submit' class='button formtext' value='{$type}'>
         {if $type == "Edit"}
             <input type='hidden' name='id' value='{$score.id}'>
@@ -40,12 +80,13 @@
         {else}
             <input type='hidden' name='code' value='wa'>
         {/if}
-
+            <input type='hidden' name='shooter_id' value='{$shooter.id}'>
             <input type='hidden' name='series_id' value='{$series_id}'>
             <input type='hidden' name='date' value='{$date}'>
 
         	<input type='hidden' name='table' value='{$table}'>
             <input type='hidden' name='return_url' value='{$goBack}'>
+            <input type='hidden' name='this_url' value='{$current_uri}'>
         {if $table=='scores'}
             {if $shooter.male == "1"}
                 <input type='hidden' name='match' value='600'>
@@ -54,7 +95,7 @@
             {/if}
         {else}
             <input type='hidden' name='match' value='300'>
-        {/else}
+        {/if}
     </form>
     <span style='display:block; clear:both; margin-bottom: 20px'></span>
 {/block}

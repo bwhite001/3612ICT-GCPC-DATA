@@ -62,6 +62,15 @@
 		case 'ee':
 			echo updateSeries(getInputData('id'), getInputData('snumber'), getInputData('date_started'), getInputData('length'), $return_url);
 			break;
+		case 'wa':
+			echo createScore(getInputData('handicap'), getInputData('score'), getInputData('series_id'), getInputData('shooter_id'), getInputData('date'), getInputData('table'), getInputData('return_url'), getInputData('this_url'), getInputData('match'));
+			break;
+		case 'we':
+			echo updateScore(getInputData('id'),getInputData('handicap'), getInputData('score'), getInputData('series_id'), getInputData('shooter_id'), getInputData('date'), getInputData('table'), getInputData('return_url'), getInputData('this_url'), getInputData('match'));
+			break;
+		case 'wd':
+			echo deleteScore(getInputData('id'), getInputData('backurl'), getInputData('table'));
+			break;
 		default:
 			if($current_code != "")
 			{

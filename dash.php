@@ -16,7 +16,7 @@ $series = getCurrentSeries(getInputData('current_series_id'));
 
 $all_series = getArray("series","");
 
-$selectedTab = (in_array(getInputData('t'), array("phpmyadmin","n", "s", "e", "p","r","a", "sa", "se", "ea", "ee","pw","pwa", "rw", "rwa")))? getInputData('t') : "s";
+$selectedTab = (in_array(getInputData('t'), array("phpmyadmin","n", "s", "e", "p","r","a", "sa", "se", "ea", "ee","pw","pwa","pwe", "rw", "rwa","rwe")))? getInputData('t') : "s";
 
 $error_is_good = getInputData('error_is_good');
 $error_string = getInputData('error_string');
@@ -136,6 +136,48 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 
 		$template = "weekly/weeklyForm";
 
+	}
+	#for Pistol Week, Rifle Week ADD
+	if($tab == "pwe" || $tab == "rwe")
+	{
+		$table = ($tab == "pwe") ? "scores" : "rifle_scores";
+		$thisUrl = ($tab == "pwe") ? "p" : "r";
+
+		$id = sanitiseMyStringNow(getInputData("id"));
+		$redirect = urldecode(sanitiseMyStringNow(getInputData("backurl")));
+
+
+		if(!doesExist($table, $id))
+			redirectToUrl($redirect, array('error_string' => "Score Does Not Exist!", 'error_is_good' => 'false'));
+
+
+		$score = getInfo($table, $id);
+
+		$series_id = $score['series_id'];
+
+		$shooter = getShooter($score['shooter_id']);
+		if($shooter == "-1") {
+			redirectToUrl($redirect, array('error_string' => "Shooter Does Not Exist!", 'error_is_good' => 'false'));
+			exit;
+		}
+
+		$shooterName = $shooter['firstname']." ".$shooter['lastname'];
+
+		$date = $score['date'];
+
+		$smarty->assign("score", $score);
+
+		$smarty->assign("series_id", $series_id);
+		$smarty->assign("shooter", $shooter);
+		$smarty->assign("date", $date);
+
+		$smarty->assign("table", $table);
+		$smarty->assign("type", "Edit");
+		$smarty->assign("goBack", $redirect);
+
+		$navbar[$thisUrl]['selected'] = 1;
+
+		$template = "weekly/weeklyForm";
 	}
 	#for Shooter Add and Edit
 	if($tab == "sa" || $tab == "se")

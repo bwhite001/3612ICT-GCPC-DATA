@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-13 15:48:48
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-13 23:51:32
          compiled from "./templates/dashboardTabs/weekly.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2074431478518b904b667299-42543098%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ff758a374125be99dfa9c2e3f75114b86d386084' => 
     array (
       0 => './templates/dashboardTabs/weekly.tpl',
-      1 => 1368420526,
+      1 => 1368449490,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
@@ -149,12 +149,32 @@ $_smarty_tpl->tpl_vars['score']->_loop = true;
 						<td><?php echo $_smarty_tpl->tpl_vars['matchTitles']->value[$_smarty_tpl->tpl_vars['hcap']->value];?>
 </td>
 					<?php }?>
-					<td><a class='button edit'>Edit</a></td>
-					<td><a class='button delete'>Delete</a></td>
 
+					<?php $_smarty_tpl->tpl_vars["uri"] = new Smarty_variable(urlencode($_smarty_tpl->tpl_vars['current_uri']->value), null, 0);?>
+					<td><a class='button edit' href='dash.php?t=<?php echo $_smarty_tpl->tpl_vars['thisUrl']->value;?>
+we&id=<?php echo $_smarty_tpl->tpl_vars['score']->value['id'];?>
+&backurl=<?php echo $_smarty_tpl->tpl_vars['uri']->value;?>
+'>Edit</a></td>
+
+					<?php if ($_smarty_tpl->tpl_vars['type']->value=="Pistol"){?>
+						<td><a class='button delete' href='action.php?code=wd&id=<?php echo $_smarty_tpl->tpl_vars['score']->value['id'];?>
+&table=scores&backurl=<?php echo $_smarty_tpl->tpl_vars['uri']->value;?>
+'>Delete</a></td>
+					<?php }else{ ?>
+						<td><a class='button delete' href='action.php?code=wd&id=<?php echo $_smarty_tpl->tpl_vars['score']->value['id'];?>
+&table=rifle_scores&backurl=<?php echo $_smarty_tpl->tpl_vars['uri']->value;?>
+'>Delete</a></td>
+					<?php }?>
 				</tr>
 			<?php } ?>
 		</table>
+		<script type="text/javascript">
+			$(".button.delete").click(function (event) {
+				if (!confirm('Are you sure you want to delete this score?')) {
+					event.preventDefault();
+				}
+			});
+		</script>
 	<?php }else{ ?>
 	<h2>No Current Scores</h2>
 	<p style="text-align: center;font-size: 23px;">There Are No Scores for Today<p>

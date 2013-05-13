@@ -13,5 +13,8 @@
 	
 }
 #weeklyForm .formText.select {
-    width: 72.3%;
-	
+    width: 52.3%;
+}
+.back.button.edit {
+    float: left;
+}

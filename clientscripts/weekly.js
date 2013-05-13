@@ -52,7 +52,7 @@ function displayData(json)
 	else {
 		$('#searchResultsText').show();
 		$('#searchResults').hide();
-		$('#searchResultsText').text("No Results Returned")
+		$('#searchResultsText').html("No Results Returned <a class='button newshooter' href='dash.php?t=sa&backurl="+json.backUrl+"'>Create Shooter</a>");
 		$("#topSeachBox").removeAttr('style');
 		$("#searchBox").removeAttr('style');
 		$("#magGlass").removeAttr('style');

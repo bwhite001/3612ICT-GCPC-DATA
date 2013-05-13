@@ -38,8 +38,8 @@
 			</ul>
 		</div>
 	</div>
-	<h2>Current Scores</h2>
 	{if count($scores) > 0}
+		<h2>Current Scores - Total {count($scores)}</h2>
 		<table>
 			<tr>
 				<th width='40%'>Name</th>
@@ -85,6 +85,7 @@
 			{/foreach}
 		</table>
 	{else}
+	<h2>No Current Scores</h2>
 	<p style="text-align: center;font-size: 23px;">There Are No Scores for Today<p>
 	{/if}
 {/block}

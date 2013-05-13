@@ -76,15 +76,14 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 
 		$type = ($tab == "pw") ? "Pistol" : "Rifle";
 
-		$date = date("Y-m-d",strtotime("+$weekNumber week", strtotime($current_series['date_started'])));
-
-		$sql = "SELECT $table.*, CONCAT(shooters.firstname, ' ',shooters.lastname) as name, `shooters`.male AS male FROM `$table`, `shooters` WHERE `date` = '$date' and series_id = ".$current_series['id']." and`$table`.shooter_id = `shooters`.id order by `shooters`.firstname";
-		$scores = getArray("-1", $sql);
-
 		if($day == "w")
 			$weeklyDate = strtotime("+$weekNumber week", strtotime($current_series['date_started']));
 		else
 			$weeklyDate = strtotime("+2 day +$weekNumber week", strtotime($current_series['date_started']));
+
+		$date = date("Y-m-d", $weeklyDate);
+		$sql = "SELECT $table.*, CONCAT(shooters.firstname, ' ',shooters.lastname) as name, `shooters`.male AS male FROM `$table`, `shooters` WHERE `date` = '$date' and series_id = ".$current_series['id']." and`$table`.shooter_id = `shooters`.id order by `shooters`.firstname";
+		$scores = getArray("-1", $sql);
 
 		$navbar[$thisUrl]['selected'] = 1;
 		$smarty->assign("thisUrl", $thisUrl);
@@ -127,6 +126,8 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 
 		$smarty->assign("series_id", $series_id);
 		$smarty->assign("shooter", $shooter);
+		$smarty->assign("date", $date);
+
 
 		$smarty->assign("goBack", $redirect);
 		

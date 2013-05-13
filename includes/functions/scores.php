@@ -27,4 +27,29 @@
 
         return array('wed' => $wedDateStr, 'wedc' => $wedCount, 'fri' => $friDateStr, 'fric' => $friCount, 'total' => $totalCount);
     }
+
+    function createScore($hcap, $series_id, $date, $table, $return_url, $topScore)
+    {
+
+    }
+
+    function validateScore($hcap, $series_id, $date, $table, $topScore)
+    {
+        $isError = false;
+
+        $errorString = "<b>Errors in Form!</b> <br />";
+
+        if($table != "scores" || $table != "rifle_scores")
+        {
+            $errorString .= "Invalid Table </br>";
+        }
+        if($table == 'scores')
+        {
+            if($hcap == "")
+            {
+                $errorString .= "Handicap Must have a value! (Can Be Zero)</br>";
+                
+            } 
+        }
+    }
 ?>

@@ -19,7 +19,7 @@
 			list($check, $sql, $error_data) = addShooter($current_data);
 			if(!$check)
 			{
-				redirectToUrl("dash.php?t=sa", array('error_string' => $error_data, 'error_is_good' => 'false'));
+				redirectToUrl("dash.php?t=sa", array('error_string' => $error_data, 'error_is_good' => 'false', 'backurl' => $return_url));
 				exit;
 			}
 			else
@@ -43,7 +43,7 @@
 			if(!$check)
 			{	
 				$redirect = "dash.php?t=se?id=".$shooter['id'];
-				redirectToUrl($redirect, array('error_string' => $error_data, 'error_is_good' => 'false'));
+				redirectToUrl($redirect, array('error_string' => $error_data, 'error_is_good' => 'false', 'backurl' => $return_url));
 				exit;
 			}
 			else
@@ -85,7 +85,7 @@
 				echo "No Current Data";
 			}
 			$url = (urldecode($return_url) == "") ? "dash.php" : urldecode($return_url);
-			redirectToUrl($url, "");
+			//redirectToUrl($url, "");
 			break;
 
 	}

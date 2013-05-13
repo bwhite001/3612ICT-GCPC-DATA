@@ -113,3 +113,8 @@ th {
 .side.right.female {
     color: #F4B;
 }
+.button.newshooter {
+    font-size: 15px;
+    float: right;
+    margin: -2px 5px;
+}

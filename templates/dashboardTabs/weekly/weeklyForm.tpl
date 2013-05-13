@@ -17,15 +17,18 @@
             }
         </style>
     {/if}
-	<h1>{$type} Score - {$shooter.firstname} {$shooter.lastname}<a class='back button' href="{$goBack}">Cancel</a></h1>
+    {assign "urri" urlencode($goBack)}
+	<h1><a class='back button edit' href="dash.php?t=se&id={$shooter.id}&backurl={$urri}">Edit Shooter</a>{$type} Score - {$shooter.firstname} {$shooter.lastname}<a class='back button' href="{$goBack}">Cancel</a></h1>
 	<form action='action.php' method='post' id='weeklyForm'>
 		{if $table=='scores'}
 			<span class="formTitle">Handicap:</span>
-	        <input class='formText' type="text" name="Handicap" value='{$score.handicap}'>
+	        <input class='formText' type="text" name="handicap" value='{$score.handicap}'>
         {else}
         	<span class="formTitle">Match:</span>
 	        <select class='formText select'>
-
+                {for $i=0 to 2}
+                <option value='{$i}'>{$matchTitles[$i]}</option>
+                {/for}
 	        </select>
         {/if}
         <span class="formTitle">Score:</span>
@@ -37,8 +40,21 @@
         {else}
             <input type='hidden' name='code' value='wa'>
         {/if}
+
+            <input type='hidden' name='series_id' value='{$series_id}'>
+            <input type='hidden' name='date' value='{$date}'>
+
         	<input type='hidden' name='table' value='{$table}'>
             <input type='hidden' name='return_url' value='{$goBack}'>
+        {if $table=='scores'}
+            {if $shooter.male == "1"}
+                <input type='hidden' name='match' value='600'>
+            {else}
+                <input type='hidden' name='match' value='400'>
+            {/if}
+        {else}
+            <input type='hidden' name='match' value='300'>
+        {/else}
     </form>
     <span style='display:block; clear:both; margin-bottom: 20px'></span>
 {/block}

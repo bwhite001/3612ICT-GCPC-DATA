@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-09 22:53:15
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-25 10:13:40
          compiled from "./templates/dashboardTabs/pistol.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1346795526518b781e990d30-88102954%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6652e982e269439b03cd3a59380a9188105f2deb' => 
     array (
       0 => './templates/dashboardTabs/pistol.tpl',
-      1 => 1368100391,
+      1 => 1369437214,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
@@ -89,10 +89,9 @@ $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1
 </strong></td>
 				<td><strong><?php echo $_smarty_tpl->tpl_vars['week']->value['total'];?>
 </strong></td>
-				<td>
-					<a href=''>Winners</a> <br/> 
-					<a href=''>Overall</a>
-				</td>
+				<td><a href='dash.php?t=tw&week=<?php echo $_smarty_tpl->tpl_vars['w']->value;?>
+&backurl=<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+'>Weekly Stats</a></td>
 			</tr>
 		<?php }} ?>
 			<?php $_smarty_tpl->tpl_vars["celb"] = new Smarty_variable(getWeekly($_smarty_tpl->tpl_vars['current_series']->value,9,false), null, 0);?>
@@ -106,10 +105,8 @@ $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1
 				<td><strong><?php echo $_smarty_tpl->tpl_vars['celb']->value['fric'];?>
 </strong></td>
 				<td><strong>N/A</strong></td>
-				<td>
-					<a href=''>Winners</a> <br/> 
-					<a href=''>Overall</a>
-				</td>
+				<td><a href='dash.php?t=tw&week=9&backurl=<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+'>Weekly Stats</a></td>
 			</tr>
 	</table>
 

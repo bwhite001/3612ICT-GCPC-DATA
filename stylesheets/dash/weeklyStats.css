@@ -1,0 +1,53 @@
+.smaller {
+    width: 50%;
+    float: left;
+}
+#content h2 {
+	background-color: #07B;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.newTable {
+    width: 90%;
+    margin: 5%;
+}
+.newTable.male {
+	border-color: #07B;
+}
+
+.newTable.male th, .newTable.male td{
+	color: #FFF;
+    border-color: #07B;
+    background-color: rgba(0, 119, 187, 0.4);
+}
+.newTable.male th {
+	background-color: rgba(0, 119, 187, 0.8);
+	color: #DDD;
+}
+.newTable.male .newColor{
+	color: #AAA;
+	background-color: rgba(0, 119, 187, 0.3);
+}
+
+.newTable.female {
+	border-color: #B07;
+}
+
+.newTable.female th, .newTable.female td{
+	color: #FFF;
+    border-color: #B07;
+    background-color: rgba(197,0,119, 0.4);
+}
+.newTable.female th {
+	background-color: rgba(197,0,119, 0.8);
+	color: #DDD;
+}
+.newTable.female .newColor{
+	color: #AAA;
+	background-color: rgba(197,0,119, 0.3);
+}
+.graphCanvas {
+    margin: auto;
+    display: block;
+    width: 460px;
+}

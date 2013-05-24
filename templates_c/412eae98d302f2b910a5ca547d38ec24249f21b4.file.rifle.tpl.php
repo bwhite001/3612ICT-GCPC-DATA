@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-09 22:53:13
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-25 10:14:05
          compiled from "./templates/dashboardTabs/rifle.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1922957501518b875a9e2209-79798388%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '412eae98d302f2b910a5ca547d38ec24249f21b4' => 
     array (
       0 => './templates/dashboardTabs/rifle.tpl',
-      1 => 1368100382,
+      1 => 1369437243,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
@@ -83,7 +83,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th width='25%'>Friday</th>
 			<th width='5%'>Day <br/>Count</th>
 			<th width='5%'>Weekly <br/>Total</th>
-			<th width='30%'>Stats</th>
 		</tr>
 		<?php $_smarty_tpl->tpl_vars['w'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['w']->step = 1;$_smarty_tpl->tpl_vars['w']->total = (int)ceil(($_smarty_tpl->tpl_vars['w']->step > 0 ? 8+1 - (1) : 1-(8)+1)/abs($_smarty_tpl->tpl_vars['w']->step));
 if ($_smarty_tpl->tpl_vars['w']->total > 0){
@@ -105,10 +104,6 @@ $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1
 </strong></td>
 				<td><strong><?php echo $_smarty_tpl->tpl_vars['week']->value['total'];?>
 </strong></td>
-				<td>
-					<a href=''>Winners</a> <br/> 
-					<a href=''>Overall</a>
-				</td>
 			</tr>
 		<?php }} ?>
 			<?php $_smarty_tpl->tpl_vars["celb"] = new Smarty_variable(getWeekly($_smarty_tpl->tpl_vars['current_series']->value,9,true), null, 0);?>
@@ -122,10 +117,6 @@ $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1
 				<td><strong><?php echo $_smarty_tpl->tpl_vars['celb']->value['fric'];?>
 </strong></td>
 				<td><strong>N/A</strong></td>
-				<td>
-					<a href=''>Winners</a> <br/> 
-					<a href=''>Overall</a>
-				</td>
 			</tr>
 	</table>
 

@@ -16,7 +16,7 @@ $series = getCurrentSeries(getInputData('current_series_id'));
 
 $all_series = getArray("series","");
 
-$selectedTab = (in_array(getInputData('t'), array("phpmyadmin","n", "s", "e", "p","r","a", "sa", "se", "ea", "ee","pw","pwa","pwe", "rw", "rwa","rwe")))? getInputData('t') : "s";
+$selectedTab = (in_array(getInputData('t'), array("phpmyadmin","n", "s", "e", "p","r","a", "sa", "se", "ea", "ee","pw","pwa","pwe","pws", "rw", "rwa","rwe", "rws","t", "ts", "te", "ty", "tw")))? getInputData('t') : "s";
 
 $error_is_good = getInputData('error_is_good');
 $error_string = getInputData('error_string');
@@ -54,7 +54,7 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 		if(count($all_series) <= 0)
 			redirectToUrl("dash.php", array('error_string' => "Please Create a Series!", 'error_is_good' => 'false'));
 	}
-	if($tab == "r" || $tab == "rw" || $tab == "rwa" || $tab == "rwe")
+	if($tab == "r" || $tab == "rw" || $tab == "rwa" || $tab == "rwe" || $tab == "rws")
 	{
 		$matchTitles = array('0' => "Unsupported", '1' => 'Supported', '2' => "Bench");
 		$smarty->assign("matchTitles", $matchTitles);
@@ -179,6 +179,37 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 
 		$template = "weekly/weeklyForm";
 	}
+	if($tab == "pws" || $tab == "rws")
+	{
+		$table = ($tab == "pws") ? "scores" : "rifle_scores";
+		$thisUrl = ($tab == "pws") ? "p" : "r";	
+
+		$date = sanitiseMyStringNow(getInputData("date"));
+		$series_id = sanitiseMyStringNow(getInputData("series_id"));
+		$shooter_id = sanitiseMyStringNow(getInputData("shooter_id"));
+		$match = sanitiseMyStringNow(getInputData("match"));
+
+		$redirect = urldecode(sanitiseMyStringNow(getInputData("return_url")));
+		if($redirect == "")
+			$redirect = "dash.php?t=p";
+
+		$shooter = getShooter($shooter_id);
+
+		if($shooter == "-1") {
+				redirectToUrl("dash.php?t=s", array('error_string' => "Shooter Does Not exist!", 'error_is_good' => 'false'));
+				exit;
+			}
+
+		$smarty->assign("series_id", $series_id);
+		$smarty->assign("shooter", $shooter);
+		$smarty->assign("date", $date);
+
+		$smarty->assign("match", $match);
+		$smarty->assign("table", $table);
+		$smarty->assign("goBack", $redirect);
+
+		$template = "weekly/scoresheet";
+	}
 	#for Shooter Add and Edit
 	if($tab == "sa" || $tab == "se")
 	{
@@ -190,8 +221,70 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 
 		$smarty->assign("type", $type);
 	}
+	#for Weekly Stats
+	if($tab == "tw")
+	{
+		$goBack = (getInputData('backurl') == "") ? "dash.php?t=te" : getInputData('backurl');
+
+		$weekNumber = getInputData("week");
+		$table = "scores";
+
+		list($maleShooters) = getWeekPointsWinners($current_series, $weekNumber, true, true);
+		list($femaleShooters, $wed, $fri) = getWeekPointsWinners($current_series, $weekNumber, false, true);
+		$date1 = date("M j", strtotime($wed));
+		$date2 = date("M j", strtotime($fri));
+
+		$header = "Current Stats for Week $weekNumber, $date1 & $date2";
+
+		$smarty->assign("header", $header);
+		$smarty->assign("hasJs", true);
+		$smarty->assign("goBack", urldecode($goBack));
+		$smarty->assign("type", $type);
+		$smarty->assign("maleShooters", $maleShooters);
+		$smarty->assign("femaleShooters", $femaleShooters);
+
+		$navbar["t"]['selected'] = 1;
+
+		$smarty->assign("template", "weeklyStats");
+		$template = "stats";
+	}
+	#For all Stats
+	if($tab == "t" || $tab == "ts" || $tab == "te" || $tab == "ty" || $tab == "twp" || $tab == "twr")
+	{
+		$hasJs = false;
+
+		if($tab == "ts")
+		{
+			$miniNav = "s";
+			$miniTemplate = "shooterStats";
+		}
+		else if($tab == "te" || $tab == "twp" || $tab == "twr")
+		{
+			$miniNav = "e";
+			$miniTemplate = "seriesStats";
+			$hasJs = true;
+		}
+		else if($tab == "ty")
+		{
+			$miniNav = "y";
+			$miniTemplate = "yearlyStats";
+		}
+		else
+		{
+			$miniNav = "s";
+			$miniTemplate = "shooterStats";
+		}
+
+		$navbar["t"]['selected'] = 1;
+
+		$smarty->assign("hasJs", $hasJs);
+		$smarty->assign("template", $miniTemplate);
+		$smarty->assign("miniNav", $miniNav);
+
+		$template = "stats";
+	}
 	#For Series Add and Edit
-	else if($tab == "ea" || $tab == "ee")
+	if($tab == "ea" || $tab == "ee")
 	{
 		$goBack = (getInputData('backurl') == "") ? "dash.php?t=e" : getInputData('backurl');
 

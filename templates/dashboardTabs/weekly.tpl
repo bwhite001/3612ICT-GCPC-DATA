@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	{if count($scores) > 0}
-		<h2>Current Scores - Total {count($scores)}</h2>
+		<h2>Current Scores - Total {count($scores)} <a class='button back' href=''>Weekly Stats</a></h2>
 		<table>
 			<tr>
 				<th width='40%'>Name</th>

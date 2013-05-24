@@ -27,6 +27,20 @@
 
         return array('wed' => $wedDateStr, 'wedc' => $wedCount, 'fri' => $friDateStr, 'fric' => $friCount, 'total' => $totalCount);
     }
+    function getWeeklyTotals($series, $rifle)
+    {
+        $wedCount = 0;
+        $friCount = 0;
+        $totalCount = 0;
+        for($i = 1; $i < $series['length']+1; $i++)
+        {
+            $temp = getWeekly($series, $i, $rifle);
+            $wedCount += $temp['wedc'];
+            $friCount += $temp['fric'];
+            $totalCount += $temp['total'];
+        }
+        return array('wedc' => $wedCount, 'fric' => $friCount, 'total' => $totalCount);
+    }
     function updateScore($id, $hcap, $score, $series_id, $shooter_id, $date, $table, $return_url, $this_url, $topScore)
     {
         $id = sanitiseMyStringNow($id);

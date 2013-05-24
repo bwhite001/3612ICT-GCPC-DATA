@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-12 00:11:19
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-23 13:21:52
          compiled from "./templates/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2097426510517e68d90a9f84-81127902%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97c13ae6868bbc459509c9f1b968154acd23eecc' => 
     array (
       0 => './templates/header.tpl',
-      1 => 1368277877,
+      1 => 1369275710,
       2 => 'file',
     ),
   ),
@@ -45,7 +45,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 </div>
 <div id='navBar'>
-    <ul>
+    <ul style='width:<?php echo count($_smarty_tpl->tpl_vars['navbar']->value)*156;?>
+px'>
     <?php  $_smarty_tpl->tpl_vars['nav'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['nav']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['navbar']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['nav']->key => $_smarty_tpl->tpl_vars['nav']->value){

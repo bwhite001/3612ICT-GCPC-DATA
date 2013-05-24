@@ -11,7 +11,7 @@
 	</div>
 </div>
 <div id='navBar'>
-    <ul>
+    <ul style='width:{count($navbar)*156}px'>
     {foreach from=$navbar item=nav}
         {if $nav.selected == 1}
         <li class='nav_item selected'>

@@ -29,7 +29,6 @@
 			<th width='25%'>Friday</th>
 			<th width='5%'>Day <br/>Count</th>
 			<th width='5%'>Weekly <br/>Total</th>
-			<th width='30%'>Stats</th>
 		</tr>
 		{for $w=1 to 8}
 			{assign "week" getWeekly($current_series, $w, true)}
@@ -40,10 +39,6 @@
 				<td><a href='dash.php?t=rw&week={$w}&day=f'>{$week.fri}</a></td>
 				<td><strong>{$week.fric}</strong></td>
 				<td><strong>{$week.total}</strong></td>
-				<td>
-					<a href=''>Winners</a> <br/> 
-					<a href=''>Overall</a>
-				</td>
 			</tr>
 		{/for}
 			{assign "celb" getWeekly($current_series, 9, true)}
@@ -54,10 +49,6 @@
 				<td><a href='dash.php?t=rw&week=9&day=f'>{$celb.fri}</a></td>
 				<td><strong>{$celb.fric}</strong></td>
 				<td><strong>N/A</strong></td>
-				<td>
-					<a href=''>Winners</a> <br/> 
-					<a href=''>Overall</a>
-				</td>
 			</tr>
 	</table>
 {/block}

@@ -8,6 +8,7 @@ require "functions/shooters.php";
 require "functions/series.php";
 require "functions/accounts.php";
 require "functions/scores.php";
+require "functions/stats.php";
 require "functions/json.php";
 
 function nicetime($date)
@@ -49,6 +50,31 @@ function nicetime($date)
         
         return "$difference $periods[$j] {$tense}";
     }
+ function pagination($query, $current_page, $qty_per_page, $order)
+ {
+        $total_objects = getSqlCount($query);
+
+        $total_pages = ceil($total_objects/$qty_per_page);
+
+        if($current_page < 1)
+        {
+                $current_page = 1;
+        }
+        else if($total_pages > 0 && $current_page > $total_pages)
+        {
+                $current_page = $total_pages;
+        }
+        
+        $offset = ($current_page-1) * $qty_per_page;
+        if($order != "")
+            $query .= " ORDER BY $order LIMIT $offset, $qty_per_page;";
+        else
+            $query .= " LIMIT $offset, $qty_per_page;";
+
+        $objects = getArray("-1", $query);
+
+        return array($objects, $total_pages, $current_page);
+ }
  function sanitiseMyStringNow($string)
     {
         $server = mysql_open();

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-14 00:27:47
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-23 13:11:57
          compiled from "./templates/dashboardTabs/weekly/weeklyForm.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1980736818518e3a5d6ab7c9-66475404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1f6f6f059b16eb0c50380105a1563b7e863b5f26' => 
     array (
       0 => './templates/dashboardTabs/weekly/weeklyForm.tpl',
-      1 => 1368451665,
+      1 => 1369275055,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
@@ -178,6 +178,33 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
             <input type='hidden' name='match' value='300'>
         <?php }?>
     </form>
+    <?php if ($_smarty_tpl->tpl_vars['table']->value=='scores'){?>
+        <?php $_smarty_tpl->tpl_vars["scoreUrl"] = new Smarty_variable("pws", null, 0);?>
+        <?php if ($_smarty_tpl->tpl_vars['shooter']->value['male']=="1"){?>
+            <?php $_smarty_tpl->tpl_vars["scoreMatch"] = new Smarty_variable("60", null, 0);?>
+        <?php }else{ ?>
+            <?php $_smarty_tpl->tpl_vars["scoreMatch"] = new Smarty_variable("40", null, 0);?>
+        <?php }?>
+    <?php }else{ ?>
+        <?php $_smarty_tpl->tpl_vars["scoreUrl"] = new Smarty_variable("rws", null, 0);?>
+        <?php $_smarty_tpl->tpl_vars["scoreMatch"] = new Smarty_variable("30", null, 0);?>
+    <?php }?>
+    <?php if ($_smarty_tpl->tpl_vars['type']->value!='Edit'){?>
+        <form action="dash.php?t=<?php echo $_smarty_tpl->tpl_vars['scoreUrl']->value;?>
+" method='post'>
+            <input type='hidden' name='shooter_id' value='<?php echo $_smarty_tpl->tpl_vars['shooter']->value['id'];?>
+'>
+            <input type='hidden' name='series_id' value='<?php echo $_smarty_tpl->tpl_vars['series_id']->value;?>
+'>
+            <input type='hidden' name='date' value='<?php echo $_smarty_tpl->tpl_vars['date']->value;?>
+'>
+            <input type='hidden' name='match' value='<?php echo $_smarty_tpl->tpl_vars['scoreMatch']->value;?>
+'>
+            <input type='hidden' name='return_url' value='<?php echo $_smarty_tpl->tpl_vars['goBack']->value;?>
+'>
+            <input class='button scoresheet' type='submit' value='Use Score Sheet'>
+        </form>
+    <?php }?>
     <span style='display:block; clear:both; margin-bottom: 20px'></span>
 
                 </div>

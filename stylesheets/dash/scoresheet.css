@@ -1,0 +1,59 @@
+#scoresheetForm {
+	width: 100%;
+	margin: auto;
+	font-size: 1.3em;
+	color: #222;
+}
+#scoresheetForm .formTitle {
+    width: 14%;
+    margin-top: 4px;
+}
+#handicaptxt {
+	width: 38%;
+}
+#scoresheetForm .formText.select {
+    width: 52.3%;
+}
+.back.button.edit {
+    float: left;
+}
+.button.scoresheet {
+    display: block;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: #069;
+    border-color: #005588;
+}
+table {
+    text-align: center;
+    width: 900px;
+    margin: 10px auto;
+    border: solid #CCC 3px;
+    border-collapse: collapse;
+}
+th, td{
+    padding: 10px;
+    border: solid #CCC 1px;
+}
+th {
+    background-color: #EEE;
+}
+.formText.table {
+    width: 95px;
+    height: 30px;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+.inputInside {
+    width: 100px;
+    padding: 0px 0px;
+    vertical-align: center;
+    height: 45px;
+}
+.formText.table:focus {
+    background-color: #F96;
+    color: white;
+}

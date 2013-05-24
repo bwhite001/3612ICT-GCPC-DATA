@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-13 23:51:32
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-23 13:26:57
          compiled from "./templates/dashboardTabs/weekly.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2074431478518b904b667299-42543098%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ff758a374125be99dfa9c2e3f75114b86d386084' => 
     array (
       0 => './templates/dashboardTabs/weekly.tpl',
-      1 => 1368449490,
+      1 => 1369276014,
       2 => 'file',
     ),
     '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
@@ -101,7 +101,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 	<?php if (count($_smarty_tpl->tpl_vars['scores']->value)>0){?>
 		<h2>Current Scores - Total <?php echo count($_smarty_tpl->tpl_vars['scores']->value);?>
-</h2>
+ <a class='button back' href=''>Weekly Stats</a></h2>
 		<table>
 			<tr>
 				<th width='40%'>Name</th>

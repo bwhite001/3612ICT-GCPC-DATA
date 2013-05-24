@@ -18,3 +18,10 @@
 .back.button.edit {
     float: left;
 }
+.button.scoresheet {
+    display: block;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: #069;
+    border-color: #005588;
+}

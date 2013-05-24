@@ -24,10 +24,7 @@
 				<td><a href='dash.php?t=pw&week={$w}&day=f'>{$week.fri}</a></td>
 				<td><strong>{$week.fric}</strong></td>
 				<td><strong>{$week.total}</strong></td>
-				<td>
-					<a href=''>Winners</a> <br/> 
-					<a href=''>Overall</a>
-				</td>
+				<td><a href='dash.php?t=tw&week={$w}&backurl={$current_uri}'>Weekly Stats</a></td>
 			</tr>
 		{/for}
 			{assign "celb" getWeekly($current_series, 9, false)}
@@ -38,10 +35,7 @@
 				<td><a href='dash.php?t=pw&week=9&day=f'>{$celb.fri}</a></td>
 				<td><strong>{$celb.fric}</strong></td>
 				<td><strong>N/A</strong></td>
-				<td>
-					<a href=''>Winners</a> <br/> 
-					<a href=''>Overall</a>
-				</td>
+				<td><a href='dash.php?t=tw&week=9&backurl={$current_uri}'>Weekly Stats</a></td>
 			</tr>
 	</table>
 {/block}

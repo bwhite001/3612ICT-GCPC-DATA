@@ -97,5 +97,26 @@
             <input type='hidden' name='match' value='300'>
         {/if}
     </form>
+    {if $table=='scores'}
+        {assign "scoreUrl" "pws"}
+        {if $shooter.male == "1"}
+            {assign "scoreMatch" "60"}
+        {else}
+            {assign "scoreMatch" "40"}
+        {/if}
+    {else}
+        {assign "scoreUrl" "rws"}
+        {assign "scoreMatch" "30"}
+    {/if}
+    {if $type !='Edit'}
+        <form action="dash.php?t={$scoreUrl}" method='post'>
+            <input type='hidden' name='shooter_id' value='{$shooter.id}'>
+            <input type='hidden' name='series_id' value='{$series_id}'>
+            <input type='hidden' name='date' value='{$date}'>
+            <input type='hidden' name='match' value='{$scoreMatch}'>
+            <input type='hidden' name='return_url' value='{$goBack}'>
+            <input class='button scoresheet' type='submit' value='Use Score Sheet'>
+        </form>
+    {/if}
     <span style='display:block; clear:both; margin-bottom: 20px'></span>
 {/block}

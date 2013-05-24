@@ -1,0 +1,65 @@
+#miniNav a {
+    padding: 12px 5%;
+    display: block;
+    width: 256px;
+    margin-left: 5px;
+    border: solid 1px #036;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2) inset, -2px -2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+#miniNav li {
+    display: block;
+    text-align: center;
+    float: left;
+    width: 292px;
+}
+#miniNav ul {
+    margin: 0px auto;
+    padding: 5px;
+    width: 877px;
+    height: 45px;
+}
+#miniNav a:hover {
+    background-color: rgba(220, 236, 236, 0.2);
+}
+.right {
+    font-size: 50px;
+    font-family: entypo;
+    color: #F60;
+    position: absolute;
+    margin-top: -16px;
+    margin-left: 10px;
+    text-shadow: 1px 1px 2px #036;
+}
+#miniNav {
+    background-color: #069;
+    margin-bottom: 20px;
+}
+#tabContent #miniNavSelected {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2) inset, 2px 2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+#statsContent h1 {
+    background-color: #222;
+}
+table {
+    text-align: center;
+    width: 900px;
+    margin: 10px auto;
+    border: solid #CCC 3px;
+    border-collapse: collapse;
+}
+th, td{
+    padding: 10px;
+    border: solid #CCC 1px;
+}
+th {
+    background-color: #EEE;
+    border-bottom: solid #CCC 4px;
+}
+table a {
+    color: #069;
+    font-size: 20px;
+}

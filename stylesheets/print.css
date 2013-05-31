@@ -1,0 +1,16 @@
+@page {
+    margin: 0cm;
+}
+body {
+	background-color: white;
+    width: 210mm;
+    margin: auto;
+    -webkit-print-color-adjust:exact;
+}
+.page { 
+	margin: 0px;
+	border: none;
+}
+.header, .subheader {
+	text-shadow: none;
+}

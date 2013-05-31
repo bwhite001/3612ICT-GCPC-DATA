@@ -242,6 +242,8 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 		$smarty->assign("type", $type);
 		$smarty->assign("maleShooters", $maleShooters);
 		$smarty->assign("femaleShooters", $femaleShooters);
+		
+		$smarty->assign("weekNumber", $weekNumber);
 
 		$navbar["t"]['selected'] = 1;
 

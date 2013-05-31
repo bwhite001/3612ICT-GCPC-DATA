@@ -24,7 +24,7 @@ function sqlQuery($query)
 {
 	$server = mysql_open();
 
-	$result = mysql_query($query);
+	$result = mysql_query($query) or show_error();;
 
 	mysql_close($server);
 

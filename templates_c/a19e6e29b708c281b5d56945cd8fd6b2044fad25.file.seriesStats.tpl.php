@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-25 00:44:03
+<?php /* Smarty version Smarty-3.1.12, created on 2013-06-01 00:43:00
          compiled from "./templates/dashboardTabs/stats/seriesStats.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:763142882519d8f82917ea0-98031161%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a19e6e29b708c281b5d56945cd8fd6b2044fad25' => 
     array (
       0 => './templates/dashboardTabs/stats/seriesStats.tpl',
-      1 => 1369403041,
+      1 => 1370007779,
       2 => 'file',
     ),
   ),
@@ -111,7 +111,12 @@ $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1
 </td>
 			<td><strong><?php echo $_smarty_tpl->tpl_vars['weekr']->value['total'];?>
 </strong></td>
-			<td style='border-left-width: 4px;'><strong>Overall Shooters: <?php echo $_smarty_tpl->tpl_vars['weekp']->value['total']+$_smarty_tpl->tpl_vars['weekr']->value['total'];?>
-</strong></td>
+			<td style='border-left-width: 4px;'>
+				<a href=''>Series Overall</a>
+				<br/><br/>
+				
+				<strong>Overall Shooters: <?php echo $_smarty_tpl->tpl_vars['weekp']->value['total']+$_smarty_tpl->tpl_vars['weekr']->value['total'];?>
+</strong>
+											</td>
 		</tr>
 </table><?php }} ?>

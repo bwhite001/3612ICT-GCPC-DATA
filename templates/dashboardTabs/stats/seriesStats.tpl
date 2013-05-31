@@ -57,6 +57,11 @@
 			<td style='border-left-width: 4px;'>{$weekr.wedc}</td>
 			<td>{$weekr.fric}</td>
 			<td><strong>{$weekr.total}</strong></td>
-			<td style='border-left-width: 4px;'><strong>Overall Shooters: {$weekp.total + $weekr.total}</strong></td>
+			<td style='border-left-width: 4px;'>
+				<a href=''>Series Overall</a>
+				<br/><br/>
+				
+				<strong>Overall Shooters: {$weekp.total + $weekr.total}</strong>
+											</td>
 		</tr>
 </table>

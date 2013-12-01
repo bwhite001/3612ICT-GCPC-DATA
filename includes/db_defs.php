@@ -36,7 +36,6 @@ function getSqlCount($query)
 {
 	$server = mysql_open();
 	$result = mysql_query($query);
-
 	mysql_close($server);
 
 	return mysql_num_rows($result);

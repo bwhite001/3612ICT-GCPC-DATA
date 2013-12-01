@@ -37,6 +37,13 @@
 		}
 		return $series;
 	}
+
+	function getSeriesArray($year)
+	{
+		$year = sanitiseMyStringNow($year);
+		$yearSql = "SELECT id FROM `series` WHERE YEAR(date_started) = $year";
+		return getArray("-1", $yearSql);
+	}
 	function changeSeries($id)
 	{
 		$id = sanitiseMyStringNow($id);
@@ -59,8 +66,8 @@
 
 		$currentCheck = doesExist("-1", "SELECT YEAR(date_started) as year from series where YEAR( date_started ) = '".$currentYear."' group by year desc having count(year) > 0");
 
-		$currentYear = ($currentCheck) ? $currentYear : getInfo("-1", $yearSql)['year'];
-
+		$currentYearArr = ($currentCheck) ? $currentYear : getInfo("-1", $yearSql);
+		$currentYear = $currentYearArr['year'];
 		$query = "SELECT * FROM `series` WHERE YEAR(date_started) = '$currentYear' ";
 
 		$total_series = getSqlCount($query);

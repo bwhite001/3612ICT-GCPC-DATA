@@ -29,9 +29,9 @@
 .nav_icon {
     position: absolute;
     font-family: entypo;
-    font-size: 70px;
-    margin-left: -8px;
-    margin-top: -22px;
+    font-size: 3em;
+    margin-left: -0.1em;
+    margin-top: -0.3em;
     color: #4BF;
 }
 .nav_text {

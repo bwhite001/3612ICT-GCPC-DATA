@@ -1,31 +1,31 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-01 00:29:08
+<?php /* Smarty version Smarty-3.1.12, created on 2013-11-29 00:00:36
          compiled from "./templates/prints/weekly.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:35024774751a87bedc2ba98-41432031%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:114414783751abef84747d68-86109380%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9b4d35cdfc1651aa1cac2fd8fc76cbde7f19c9b1' => 
     array (
       0 => './templates/prints/weekly.tpl',
-      1 => 1370006945,
+      1 => 1385643633,
       2 => 'file',
     ),
-    '2c0b96f94c44c83b4cf9e098fd2bb1d450d183bf' => 
+    '1618c41e762b7b98a0e4fb8217ffd9d9e5d1ca69' => 
     array (
-      0 => '/var/www/gcpc/templates/print.tpl',
-      1 => 1370002358,
+      0 => '/var/www/templates/print.tpl',
+      1 => 1370008507,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '35024774751a87bedc2ba98-41432031',
+  'nocache_hash' => '114414783751abef84747d68-86109380',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51a87bedcde8e7_91697196',
+  'unifunc' => 'content_51abef85099b66_01127928',
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51a87bedcde8e7_91697196')) {function content_51a87bedcde8e7_91697196($_smarty_tpl) {?><?php if (!is_callable('smarty_function_cycle')) include '/var/www/gcpc/libs/smarty/libs/plugins/function.cycle.php';
+<?php if ($_valid && !is_callable('content_51abef85099b66_01127928')) {function content_51abef85099b66_01127928($_smarty_tpl) {?><?php if (!is_callable('smarty_function_cycle')) include '/var/www/libs/smarty/libs/plugins/function.cycle.php';
 ?><!DOCTYPE html>
 <html>
     <head>
@@ -41,7 +41,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div class='cube male'>
                     <span class='inside'>&#127942;</span>
                 </div>
-                <span class='header'>Weekly Stats Series 2 | Page 1</span>
+                <span class='header'>Weekly Stats Series <?php echo $_smarty_tpl->tpl_vars['series']->value['snumber'];?>
+ | Page 1</span>
                 <span class='subheader'><?php echo $_smarty_tpl->tpl_vars['header']->value;?>
 </span>
                 <div class='cube female'>
@@ -169,11 +170,11 @@ $_smarty_tpl->tpl_vars['score']->_loop = true;
 						<td><?php echo $_smarty_tpl->tpl_vars['score']->value['handicap'];?>
 </td>
 						<td>
-							<?php if ($_smarty_tpl->tpl_vars['score']->value['total']<=600){?>
+							<?php if ($_smarty_tpl->tpl_vars['score']->value['total']<=400){?>
 								<?php echo $_smarty_tpl->tpl_vars['score']->value['total'];?>
 
 							<?php }else{ ?>
-								<span style='color:red'><?php echo $_smarty_tpl->tpl_vars['score']->value['total'];?>
+								<span style='color:blue'><?php echo $_smarty_tpl->tpl_vars['score']->value['total'];?>
 </span>
 							<?php }?>
 						</td>
@@ -193,7 +194,8 @@ $_smarty_tpl->tpl_vars['score']->_loop = true;
         <div class='cube male'>
             <span class='inside'>&#127942;</span>
         </div>
-        <span class='header'>Weekly Stats Series 2 | Page 2</span>
+        <span class='header'>Weekly Stats Series <?php echo $_smarty_tpl->tpl_vars['series']->value['snumber'];?>
+ | Page 2</span>
         <span class='subheader'><?php echo $_smarty_tpl->tpl_vars['header']->value;?>
 </span>
         <div class='cube female'>
@@ -249,7 +251,7 @@ $_smarty_tpl->tpl_vars['score']->_loop = true;
  Supported</span></td>
 							<td><?php echo $_smarty_tpl->tpl_vars['score']->value['score'];?>
 </td>
-							<td colspan='4'>N/A</td>
+							<td colspan='3'>N/A</td>
 						<?php }?>
 						<td><?php echo $_smarty_tpl->tpl_vars['score']->value['avg'];?>
 </td>
@@ -289,11 +291,11 @@ $_smarty_tpl->tpl_vars['score']->_loop = true;
 							<td><?php echo $_smarty_tpl->tpl_vars['score']->value['handicap'];?>
 </td>
 							<td>
-								<?php if ($_smarty_tpl->tpl_vars['score']->value['total']<=600){?>
+								<?php if ($_smarty_tpl->tpl_vars['score']->value['total']<=400){?>
 									<?php echo $_smarty_tpl->tpl_vars['score']->value['total'];?>
 
 								<?php }else{ ?>
-									<span style='color:red'><?php echo $_smarty_tpl->tpl_vars['score']->value['total'];?>
+									<span style='color:blue'><?php echo $_smarty_tpl->tpl_vars['score']->value['total'];?>
 </span>
 								<?php }?>
 							</td>
@@ -305,7 +307,7 @@ $_smarty_tpl->tpl_vars['score']->_loop = true;
  Supported</span></td>
 							<td><?php echo $_smarty_tpl->tpl_vars['score']->value['score'];?>
 </td>
-							<td colspan='4'>N/A</td>
+							<td colspan='3'>N/A</td>
 						<?php }?>
 						<td><?php echo $_smarty_tpl->tpl_vars['score']->value['avg'];?>
 </td>
@@ -364,7 +366,7 @@ $_smarty_tpl->tpl_vars['score']->_loop = true;
  Supported</span></td>
 							<td><?php echo $_smarty_tpl->tpl_vars['score']->value['score'];?>
 </td>
-							<td colspan='4'>N/A</td>
+							<td colspan='3'>N/A</td>
 						<?php }?>
 						<td><?php echo $_smarty_tpl->tpl_vars['score']->value['avg'];?>
 </td>
@@ -404,11 +406,11 @@ $_smarty_tpl->tpl_vars['score']->_loop = true;
 							<td><?php echo $_smarty_tpl->tpl_vars['score']->value['handicap'];?>
 </td>
 							<td>
-								<?php if ($_smarty_tpl->tpl_vars['score']->value['total']<=600){?>
+								<?php if ($_smarty_tpl->tpl_vars['score']->value['total']<=400){?>
 									<?php echo $_smarty_tpl->tpl_vars['score']->value['total'];?>
 
 								<?php }else{ ?>
-									<span style='color:red'><?php echo $_smarty_tpl->tpl_vars['score']->value['total'];?>
+									<span style='color:blue'><?php echo $_smarty_tpl->tpl_vars['score']->value['total'];?>
 </span>
 								<?php }?>
 							</td>
@@ -420,7 +422,7 @@ $_smarty_tpl->tpl_vars['score']->_loop = true;
  Supported</span></td>
 							<td><?php echo $_smarty_tpl->tpl_vars['score']->value['score'];?>
 </td>
-							<td colspan='4'>N/A</td>
+							<td colspan='3'>N/A</td>
 						<?php }?>
 						<td><?php echo $_smarty_tpl->tpl_vars['score']->value['avg'];?>
 </td>

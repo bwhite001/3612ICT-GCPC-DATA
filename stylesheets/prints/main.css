@@ -1,10 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 @import url("../../fonts/entypo.css");
 body {
-	font-family: 'Droid Sans', sans-serif;
-	margin: 0px;
-	padding: 0px;
-	background-color: #F5F5F5;
+    font-family: 'Droid Sans', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background-color: #F5F5F5;
 }
 
 .page {
@@ -27,18 +27,18 @@ body {
     border: solid 4px #004363;
 }
 .cube.female {
-	float: right;
-	background-color: #C00071;
-	border-color: #7D0049;
+    float: right;
+    background-color: #C00071;
+    border-color: #7D0049;
 }
 .inside {
     color: white;
     font-family: entypo;
-    font-size: 60mm;
+    font-size: 12em;
     margin: 0px;
     display: block;
-    margin-left: -1.5mm;
-    margin-top: -14.5mm;
+    margin-top: -0.2em;
+    margin-left: 0.01em;
 }
 .header {
     font-size: 8mm;
@@ -73,63 +73,63 @@ h1, h2 {
     text-align: center;
 }
 h1 {
-	padding: 2mm 0mm;
-	width: 95%;
-	margin: auto;
-	margin-bottom: 5mm;
+    padding: 2mm 0mm;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 5mm;
 }
 .block {
-	margin: auto 2.5%;
-	width: 45%;
-	float: left;
+    margin: auto 2.5%;
+    width: 45%;
+    float: left;
 }
 .block.female h2 {
-	background-color: #C00071;
+    background-color: #C00071;
 }
 .block.male h2 {
-	background-color: #006799;
+    background-color: #006799;
 }
 table {
-	margin: auto;
-	width: 100%;
-	text-align: center;
-	border-collapse: collapse;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
 }
 th, td {
-	font-size: 1em;
-	border: 1px solid #004363;
-	padding: 2% 1%;
-	text-align: center;
-	color: white;
-	background-color: #5CA7CC;
+    font-size: 1em;
+    border: 1px solid #004363;
+    padding: 2% 1%;
+    text-align: center;
+    color: white;
+    background-color: #5CA7CC;
 }
 th {
-	text-transform: uppercase;
-	font-size: 0.8em;
-	text-align: center;
-	padding: 2% 1%;
-	background-color: #1D5773;
-	color: #FFF;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    text-align: center;
+    padding: 2% 1%;
+    background-color: #1D5773;
+    color: #FFF;
 }
 .newColor td{
-	background-color: #339ACC;
+    background-color: #339ACC;
 }
 
 .block.female th, .block.female td {
-	border: 1px solid #7D0049;
-	background-color: #E065AD;
+    border: 1px solid #7D0049;
+    background-color: #E065AD;
 }
 .block.female th {
-	background-color: #902463;
+    background-color: #902463;
 }
 
 .block.female .newColor td{
-	background-color: #E0389A;
+    background-color: #E0389A;
 }
 
 .second {
-	background-color: #F28200;
-	margin-top: 5mm;
+    background-color: #F28200;
+    margin-top: 5mm;
 }
 .title, .value {
     display: block;

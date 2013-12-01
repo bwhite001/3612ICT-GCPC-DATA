@@ -1,28 +1,28 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-25 10:14:05
+<?php /* Smarty version Smarty-3.1.12, created on 2013-07-22 18:20:32
          compiled from "./templates/dashboardTabs/rifle.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1922957501518b875a9e2209-79798388%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:178291308851a90133bdfa83-05800801%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '412eae98d302f2b910a5ca547d38ec24249f21b4' => 
     array (
       0 => './templates/dashboardTabs/rifle.tpl',
-      1 => 1369437243,
+      1 => 1374413990,
       2 => 'file',
     ),
-    '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
+    'a2ae5f1c08e748db862e1ff7d4d582d6fb0ebb6f' => 
     array (
-      0 => '/var/www/gcpc/templates/core.tpl',
-      1 => 1368063232,
+      0 => '/var/www/templates/core.tpl',
+      1 => 1370008507,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1922957501518b875a9e2209-79798388',
+  'nocache_hash' => '178291308851a90133bdfa83-05800801',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_518b875aa502d4_28748505',
+  'unifunc' => 'content_51a90133e10011_09831923',
   'variables' => 
   array (
     'error_string' => 0,
@@ -30,7 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_518b875aa502d4_28748505')) {function content_518b875aa502d4_28748505($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_51a90133e10011_09831923')) {function content_51a90133e10011_09831923($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <head>
         <title>Rifle Scoring Administration</title>
@@ -84,7 +84,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th width='5%'>Day <br/>Count</th>
 			<th width='5%'>Weekly <br/>Total</th>
 		</tr>
-		<?php $_smarty_tpl->tpl_vars['w'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['w']->step = 1;$_smarty_tpl->tpl_vars['w']->total = (int)ceil(($_smarty_tpl->tpl_vars['w']->step > 0 ? 8+1 - (1) : 1-(8)+1)/abs($_smarty_tpl->tpl_vars['w']->step));
+		<?php $_smarty_tpl->tpl_vars['w'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['w']->step = 1;$_smarty_tpl->tpl_vars['w']->total = (int)ceil(($_smarty_tpl->tpl_vars['w']->step > 0 ? $_smarty_tpl->tpl_vars['current_series']->value['length']+1 - (1) : 1-($_smarty_tpl->tpl_vars['current_series']->value['length'])+1)/abs($_smarty_tpl->tpl_vars['w']->step));
 if ($_smarty_tpl->tpl_vars['w']->total > 0){
 for ($_smarty_tpl->tpl_vars['w']->value = 1, $_smarty_tpl->tpl_vars['w']->iteration = 1;$_smarty_tpl->tpl_vars['w']->iteration <= $_smarty_tpl->tpl_vars['w']->total;$_smarty_tpl->tpl_vars['w']->value += $_smarty_tpl->tpl_vars['w']->step, $_smarty_tpl->tpl_vars['w']->iteration++){
 $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1;$_smarty_tpl->tpl_vars['w']->last = $_smarty_tpl->tpl_vars['w']->iteration == $_smarty_tpl->tpl_vars['w']->total;?>
@@ -106,7 +106,7 @@ $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1
 </strong></td>
 			</tr>
 		<?php }} ?>
-			<?php $_smarty_tpl->tpl_vars["celb"] = new Smarty_variable(getWeekly($_smarty_tpl->tpl_vars['current_series']->value,9,true), null, 0);?>
+			<?php $_smarty_tpl->tpl_vars["celb"] = new Smarty_variable(getWeekly($_smarty_tpl->tpl_vars['current_series']->value,$_smarty_tpl->tpl_vars['current_series']->value['length']+1,true), null, 0);?>
 			<tr>
 				<td>-</td>
 				<td>Presentation Night <br/> <em><?php echo $_smarty_tpl->tpl_vars['celb']->value['wed'];?>

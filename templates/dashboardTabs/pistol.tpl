@@ -15,7 +15,7 @@
 			<th width='5%'>Weekly <br/>Total</th>
 			<th width='30%'>Stats</th>
 		</tr>
-		{for $w=1 to 8}
+		{for $w=1 to $current_series.length}
 			{assign "week" getWeekly($current_series, $w, false)}
 			<tr>
 				<td>{$w}</td>
@@ -27,7 +27,7 @@
 				<td><a href='dash.php?t=tw&week={$w}&backurl={$current_uri}'>Weekly Stats</a></td>
 			</tr>
 		{/for}
-			{assign "celb" getWeekly($current_series, 9, false)}
+			{assign "celb" getWeekly($current_series, $current_series.length+1, false)}
 			<tr>
 				<td>-</td>
 				<td>Presentation Night <br/> <em>{$celb.wed}</em></td>
@@ -35,7 +35,12 @@
 				<td><a href='dash.php?t=pw&week=9&day=f'>{$celb.fri}</a></td>
 				<td><strong>{$celb.fric}</strong></td>
 				<td><strong>N/A</strong></td>
-				<td><a href='dash.php?t=tw&week=9&backurl={$current_uri}'>Weekly Stats</a></td>
+				<td>
+					<a href='dash.php?t=tw&week={$w}&backurl={$current_uri}'>Weekly Stats</a>
+					<br/><br/>
+					<a href='dash.php?t=ae&backurl={$current_uri}'>Series Awards</a>
+				</td>
+
 			</tr>
 	</table>
 {/block}

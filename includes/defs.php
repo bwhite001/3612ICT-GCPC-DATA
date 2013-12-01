@@ -8,8 +8,29 @@ require "functions/shooters.php";
 require "functions/series.php";
 require "functions/accounts.php";
 require "functions/scores.php";
-require "functions/stats.php";
+require "functions/statsSeries.php";
+require "functions/statsYearly.php";
 require "functions/json.php";
+require "functions/csv.php";
+require "functions/awards.php";
+
+function searchForId($keyname, $id, $array) {
+   if (is_array($array)) {
+       foreach($array as $key => $value ) {
+           if ($value[$keyname] === $id) {
+               return array(true, $key);
+           }
+       }
+    }
+   return array(false, null);
+}
+
+function printHTML($data)
+{
+    print("<div style='white-space: pre;'>");
+    print_r($data);
+    print("</div>");
+}
 
 function nicetime($date)
     {

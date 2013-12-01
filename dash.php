@@ -16,7 +16,7 @@ $series = getCurrentSeries(getInputData('current_series_id'));
 
 $all_series = getArray("series","");
 
-$selectedTab = (in_array(getInputData('t'), array("phpmyadmin","n", "s", "e", "p","r","a", "sa", "se", "ea", "ee","pw","pwa","pwe","pws", "rw", "rwa","rwe", "rws","t", "ts", "te", "ty", "tw")))? getInputData('t') : "s";
+$selectedTab = (in_array(getInputData('t'), array("phpmyadmin","n", "s", "e", "p","r","a", "sa", "se", "ea", "ee","pw","pwa","pwe","pws", "rw", "rwa","rwe", "rws","t", "ts", "te", "ty", "tw", "a", "ae", "ay")))? getInputData('t') : "s";
 
 $error_is_good = getInputData('error_is_good');
 $error_string = getInputData('error_string');
@@ -221,7 +221,7 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 
 		$smarty->assign("type", $type);
 	}
-	#for Weekly Stats
+	#for Weekly Stats Pistol
 	if($tab == "tw")
 	{
 		$goBack = (getInputData('backurl') == "") ? "dash.php?t=te" : getInputData('backurl');
@@ -251,7 +251,7 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 		$template = "stats";
 	}
 	#For all Stats
-	if($tab == "t" || $tab == "ts" || $tab == "te" || $tab == "ty" || $tab == "twp" || $tab == "twr")
+	if($tab == "t" || $tab == "ts" || $tab == "te" || $tab == "tep" || $tab == "ter" || $tab == "ty" || $tab == "twp" || $tab == "twr")
 	{
 		$hasJs = false;
 
@@ -260,7 +260,7 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 			$miniNav = "s";
 			$miniTemplate = "shooterStats";
 		}
-		else if($tab == "te" || $tab == "twp" || $tab == "twr")
+		else if($tab == "te" || $tab == "tep" || $tab == "ter" || $tab == "twp" || $tab == "twr")
 		{
 			$miniNav = "e";
 			$miniTemplate = "seriesStats";
@@ -284,6 +284,34 @@ function sendDataToSmarty($navbar, $smarty, $tab, $all_series, $current_series)
 		$smarty->assign("miniNav", $miniNav);
 
 		$template = "stats";
+	}
+	#For Awards
+	if($tab == "a" || $tab == "ae" || $tab == "ay")
+	{
+
+		$miniNav = "e";
+		$miniTemplate = "seriesAwards";
+
+		if($tab == "ay")
+		{
+			$miniNav = "y";
+			$miniTemplate = "seriesAwards";
+		}
+
+		$navbar["a"]['selected'] = 1;
+
+		$smarty->assign("hasJs", $hasJs);
+		$smarty->assign("goBack", urldecode(sanitiseMyStringNow(getInputData("backurl"))));
+		$smarty->assign("template", $miniTemplate);
+		$smarty->assign("miniNav", $miniNav);
+
+		$smarty->assign("maleShooters", getSeriesPointWinners($current_series, true, true));
+		$smarty->assign("femaleShooters", getSeriesPointWinners($current_series, false, true));
+
+		$smarty->assign("maleTop", getTopShotSeries($current_series, true, true));
+		$smarty->assign("femaleTop", getTopShotSeries($current_series, false, true));
+
+		$template = "awards";
 	}
 	#For Series Add and Edit
 	if($tab == "ea" || $tab == "ee")

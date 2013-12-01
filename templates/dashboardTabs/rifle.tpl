@@ -30,7 +30,7 @@
 			<th width='5%'>Day <br/>Count</th>
 			<th width='5%'>Weekly <br/>Total</th>
 		</tr>
-		{for $w=1 to 8}
+		{for $w=1 to $current_series.length}
 			{assign "week" getWeekly($current_series, $w, true)}
 			<tr>
 				<td>{$w}</td>
@@ -41,7 +41,7 @@
 				<td><strong>{$week.total}</strong></td>
 			</tr>
 		{/for}
-			{assign "celb" getWeekly($current_series, 9, true)}
+			{assign "celb" getWeekly($current_series, $current_series.length+1, true)}
 			<tr>
 				<td>-</td>
 				<td>Presentation Night <br/> <em>{$celb.wed}</em></td>

@@ -1,28 +1,28 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-25 10:13:40
+<?php /* Smarty version Smarty-3.1.12, created on 2013-07-22 18:39:33
          compiled from "./templates/dashboardTabs/pistol.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1346795526518b781e990d30-88102954%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:43978861651a90134b96f81-92329807%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '6652e982e269439b03cd3a59380a9188105f2deb' => 
     array (
       0 => './templates/dashboardTabs/pistol.tpl',
-      1 => 1369437214,
+      1 => 1374478757,
       2 => 'file',
     ),
-    '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
+    'a2ae5f1c08e748db862e1ff7d4d582d6fb0ebb6f' => 
     array (
-      0 => '/var/www/gcpc/templates/core.tpl',
-      1 => 1368063232,
+      0 => '/var/www/templates/core.tpl',
+      1 => 1370008507,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1346795526518b781e990d30-88102954',
+  'nocache_hash' => '43978861651a90134b96f81-92329807',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_518b781e9f1c25_84680510',
+  'unifunc' => 'content_51a90134ddd310_62810110',
   'variables' => 
   array (
     'error_string' => 0,
@@ -30,7 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_518b781e9f1c25_84680510')) {function content_518b781e9f1c25_84680510($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_51a90134ddd310_62810110')) {function content_51a90134ddd310_62810110($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <head>
         <title>Pistol Scoring Administration</title>
@@ -69,7 +69,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th width='5%'>Weekly <br/>Total</th>
 			<th width='30%'>Stats</th>
 		</tr>
-		<?php $_smarty_tpl->tpl_vars['w'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['w']->step = 1;$_smarty_tpl->tpl_vars['w']->total = (int)ceil(($_smarty_tpl->tpl_vars['w']->step > 0 ? 8+1 - (1) : 1-(8)+1)/abs($_smarty_tpl->tpl_vars['w']->step));
+		<?php $_smarty_tpl->tpl_vars['w'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['w']->step = 1;$_smarty_tpl->tpl_vars['w']->total = (int)ceil(($_smarty_tpl->tpl_vars['w']->step > 0 ? $_smarty_tpl->tpl_vars['current_series']->value['length']+1 - (1) : 1-($_smarty_tpl->tpl_vars['current_series']->value['length'])+1)/abs($_smarty_tpl->tpl_vars['w']->step));
 if ($_smarty_tpl->tpl_vars['w']->total > 0){
 for ($_smarty_tpl->tpl_vars['w']->value = 1, $_smarty_tpl->tpl_vars['w']->iteration = 1;$_smarty_tpl->tpl_vars['w']->iteration <= $_smarty_tpl->tpl_vars['w']->total;$_smarty_tpl->tpl_vars['w']->value += $_smarty_tpl->tpl_vars['w']->step, $_smarty_tpl->tpl_vars['w']->iteration++){
 $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1;$_smarty_tpl->tpl_vars['w']->last = $_smarty_tpl->tpl_vars['w']->iteration == $_smarty_tpl->tpl_vars['w']->total;?>
@@ -94,7 +94,7 @@ $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1
 '>Weekly Stats</a></td>
 			</tr>
 		<?php }} ?>
-			<?php $_smarty_tpl->tpl_vars["celb"] = new Smarty_variable(getWeekly($_smarty_tpl->tpl_vars['current_series']->value,9,false), null, 0);?>
+			<?php $_smarty_tpl->tpl_vars["celb"] = new Smarty_variable(getWeekly($_smarty_tpl->tpl_vars['current_series']->value,$_smarty_tpl->tpl_vars['current_series']->value['length']+1,false), null, 0);?>
 			<tr>
 				<td>-</td>
 				<td>Presentation Night <br/> <em><?php echo $_smarty_tpl->tpl_vars['celb']->value['wed'];?>
@@ -105,8 +105,15 @@ $_smarty_tpl->tpl_vars['w']->first = $_smarty_tpl->tpl_vars['w']->iteration == 1
 				<td><strong><?php echo $_smarty_tpl->tpl_vars['celb']->value['fric'];?>
 </strong></td>
 				<td><strong>N/A</strong></td>
-				<td><a href='dash.php?t=tw&week=9&backurl=<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
-'>Weekly Stats</a></td>
+				<td>
+					<a href='dash.php?t=tw&week=<?php echo $_smarty_tpl->tpl_vars['w']->value;?>
+&backurl=<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+'>Weekly Stats</a>
+					<br/><br/>
+					<a href='dash.php?t=ae&backurl=<?php echo $_smarty_tpl->tpl_vars['current_uri']->value;?>
+'>Series Awards</a>
+				</td>
+
 			</tr>
 	</table>
 

@@ -213,4 +213,27 @@ function editShooter($data, $id)
                 return array(true, $sql, $errorSting);
         }
 }
+function getShooterStats($shooter_id, $type, $when, $value)
+{
+    $shooter_id = sanitiseMyStringNow($shooter_id);
+    $value = sanitiseMyStringNow($value);
+
+    $tString = "MAX(score)";
+
+    if($type == "AVG")
+    {
+        $tString = "AVG(score)";
+    }
+
+    $wString = "series_id=$value";
+
+    if($when == "year")
+    {
+        $wString = "series_id in (SELECT id FROM `series` WHERE YEAR(date_started) = $value)";
+    }
+
+    $data = getInfo("-1", "SELECT *, $tString as ceil FROM `scores` WHERE $wString AND shooter_id = $shooter_id");
+    $val = ceil($data['ceil']);
+    return $val;
+}
 ?>

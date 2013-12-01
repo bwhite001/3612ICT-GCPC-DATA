@@ -23,4 +23,6 @@
 }
 .entypo {
     font-family: "entypo";
+    line-height: 1 !important; 
+    vertical-align: middle !important;
 }

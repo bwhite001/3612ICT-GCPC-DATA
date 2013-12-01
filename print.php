@@ -20,7 +20,7 @@ if($series == "-1")
 	header("location: dash.php");
 }	
 
-$selectedTab = (in_array(getInputData('t'), array("w"))) ? getInputData('t') : "w";
+$selectedTab = (in_array(getInputData('t'), array("w","e","y"))) ? getInputData('t') : "w";
 
 $template = getPrintView($selectedTab, $series, $smarty);
 
@@ -31,11 +31,14 @@ function getPrintView($tab, $current_series, $smarty)
 	switch ($tab) {
 		case 'w':
 			$weekNumber = getInputData("week");
+
 			list($maleWed, $maleFri, $weekNumber, $wed, $fri) = getWeeklyStats($current_series, $weekNumber, true);
+			$weekNumber++;
 			list($femaleWed, $femaleFri) = getWeeklyStats($current_series, $weekNumber, false);
 
 			list($maleWinners) = getWeekPointsWinners($current_series, $weekNumber, true, true);
 			list($femaleWinners) = getWeekPointsWinners($current_series, $weekNumber, false, true);
+
 			if((count($maleWed) + count($maleFri)) > 0)
 				$maleTS = getWeeklyTopShot($current_series, $weekNumber, true);
 			else
@@ -53,14 +56,13 @@ function getPrintView($tab, $current_series, $smarty)
 				$femaleTS['score'] = "N/A";
 			}
 
-			$weekNumber++;
-
 			$template = "weekly";
 
 			$date1 = date("M j", strtotime($wed));
 			$date2 = date("M j", strtotime($fri));
 			$header = "Week $weekNumber <br/> $date1 - $date2";
 
+			$smarty->assign("series", $current_series);
 			$smarty->assign("header", $header);
 
 			$smarty->assign("maleWed", $maleWed);
@@ -77,6 +79,46 @@ function getPrintView($tab, $current_series, $smarty)
 
 			$smarty->assign("wed", $date1);
 			$smarty->assign("fri", $date2);
+
+			break;
+		case 'e':
+			$seriesYear = date("Y",strtotime($current_series['date_started']));
+
+			$header = "Series ".$current_series['snumber'].", $seriesYear";
+			$template = "endSeries";
+
+			$smarty->assign("header", $header);
+			$smarty->assign("stats", getSeriesStats($current_series));
+
+			$smarty->assign("maleAgg", getSeriesPointWinners($current_series, true, true));
+			$smarty->assign("femaleAgg", getSeriesPointWinners($current_series, false, true));
+			
+			$smarty->assign("maleTop", getTopShotSeries($current_series, true, true));
+			$smarty->assign("femaleTop", getTopShotSeries($current_series, false, true));
+
+			$smarty->assign("maleOverall", getSeriesOverall($current_series, true));
+			$smarty->assign("femaleOverall", getSeriesOverall($current_series, false));
+			break;
+		case 'y':
+			$current_year = date("Y",strtotime($current_series['date_started']));
+			$header = $current_year;
+			$template = "endYear";
+
+			$smarty->assign("header", $header);
+
+			$smarty->assign("stats", getYearlyStats($current_year));
+
+			$smarty->assign("aggArray", getYearlySummary($current_year, true));
+
+			$maleAgg = array('css' => 'male', 'title' => 'Male', 'results' => getYearlyAgg($current_year, true, true));
+			$femaleAgg = array('css' => 'female', 'title' => 'Female', 'results' => getYearlyAgg($current_year, false, true));
+
+			$smarty->assign("aggAll", array($maleAgg, $femaleAgg));
+
+			$maleOverall = array('css' => 'male', 'title' => 'Male', 'results' => getYearlyOverall($current_year, true, true));
+			$femaleOverall = array('css' => 'female', 'title' => 'Female', 'results' => getYearlyOverall($current_year, false, true));
+
+			$smarty->assign("yearOverall", array($maleOverall, $femaleOverall));
 
 			break;
 	}

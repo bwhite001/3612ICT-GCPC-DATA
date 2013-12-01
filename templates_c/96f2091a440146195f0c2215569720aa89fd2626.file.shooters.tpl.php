@@ -1,36 +1,36 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-09 12:53:37
+<?php /* Smarty version Smarty-3.1.12, created on 2013-06-01 01:08:27
          compiled from "./templates/dashboardTabs/shooters.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:909292334517e68ed651d20-19696200%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:84632164651a8aedbd3f923-26801749%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '96f2091a440146195f0c2215569720aa89fd2626' => 
     array (
       0 => './templates/dashboardTabs/shooters.tpl',
-      1 => 1367716434,
+      1 => 1370008508,
       2 => 'file',
     ),
-    '41f71335de1fbf1321cccb138f7a8cc956f0ff30' => 
+    'a2ae5f1c08e748db862e1ff7d4d582d6fb0ebb6f' => 
     array (
-      0 => '/var/www/gcpc/templates/core.tpl',
-      1 => 1368063232,
+      0 => '/var/www/templates/core.tpl',
+      1 => 1370008507,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '909292334517e68ed651d20-19696200',
+  'nocache_hash' => '84632164651a8aedbd3f923-26801749',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_517e68ed659c05_70147446',
   'variables' => 
   array (
     'error_string' => 0,
     'error_is_good' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_51a8aedc2167a4_99973350',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_517e68ed659c05_70147446')) {function content_517e68ed659c05_70147446($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_51a8aedc2167a4_99973350')) {function content_51a8aedc2167a4_99973350($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <head>
         <title>Shooters Administration</title>

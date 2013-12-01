@@ -12,7 +12,7 @@ $cfg['Servers'][$i]['auth_type']   = 'cookie';
 $cfg['Servers'][$i]['controluser'] = 'root';
 
 // with proper password
-$cfg['Servers'][$i]['controlpass'] = 'kognak001';
+$cfg['Servers'][$i]['controlpass'] = 'Brand0n01';
 
 // PHP 5 support for new MySQL 4.1.3+ features:
 $cfg['Servers'][$i]['extension'] = 'mysqli';

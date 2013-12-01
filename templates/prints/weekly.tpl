@@ -1,7 +1,7 @@
 {extends file="../print.tpl"}
 {block name=title}Pistol Scoring Administration{/block}
 {block name=template}weekly{/block}
-{block name=header}Weekly Stats Series 2 | Page 1{/block}
+{block name=header}Weekly Stats Series {$series.snumber} | Page 1{/block}
 {block name=subheader}{$header}{/block}
 {block name=body}
 	<h1>Weekly Stats</h1>
@@ -92,10 +92,10 @@
 						<td>{$score.score}</td>
 						<td>{$score.handicap}</td>
 						<td>
-							{if $score.total <= 600}
+							{if $score.total <= 400}
 								{$score.total}
 							{else}
-								<span style='color:red'>{$score.total}</span>
+								<span style='color:blue'>{$score.total}</span>
 							{/if}
 						</td>
 						<td>{$score.stotal}</td>
@@ -113,7 +113,7 @@
         <div class='cube male'>
             <span class='inside'>&#127942;</span>
         </div>
-        <span class='header'>Weekly Stats Series 2 | Page 2</span>
+        <span class='header'>Weekly Stats Series {$series.snumber} | Page 2</span>
         <span class='subheader'>{$header}</span>
         <div class='cube female'>
             <span class='inside'>&#127942;</span>
@@ -152,7 +152,7 @@
 						{else}
 						<td><span style='font-size:0.8em'>{$shooter.firstname} {$shooter.lastname} Supported</span></td>
 							<td>{$score.score}</td>
-							<td colspan='4'>N/A</td>
+							<td colspan='3'>N/A</td>
 						{/if}
 						<td>{$score.avg}</td>
 					</tr>
@@ -182,17 +182,17 @@
 							<td>{$score.score}</td>
 							<td>{$score.handicap}</td>
 							<td>
-								{if $score.total <= 600}
+								{if $score.total <= 400}
 									{$score.total}
 								{else}
-									<span style='color:red'>{$score.total}</span>
+									<span style='color:blue'>{$score.total}</span>
 								{/if}
 							</td>
 							<td>{$score.stotal}</td>
 						{else}
 						<td><span style='font-size:0.8em'>{$shooter.firstname} {$shooter.lastname} Supported</span></td>
 							<td>{$score.score}</td>
-							<td colspan='4'>N/A</td>
+							<td colspan='3'>N/A</td>
 						{/if}
 						<td>{$score.avg}</td>
 					</tr>
@@ -234,7 +234,7 @@
 						{else}
 						<td><span style='font-size:0.8em'>{$shooter.firstname} {$shooter.lastname} Supported</span></td>
 							<td>{$score.score}</td>
-							<td colspan='4'>N/A</td>
+							<td colspan='3'>N/A</td>
 						{/if}
 						<td>{$score.avg}</td>
 					</tr>
@@ -264,17 +264,17 @@
 							<td>{$score.score}</td>
 							<td>{$score.handicap}</td>
 							<td>
-								{if $score.total <= 600}
+								{if $score.total <= 400}
 									{$score.total}
 								{else}
-									<span style='color:red'>{$score.total}</span>
+									<span style='color:blue'>{$score.total}</span>
 								{/if}
 							</td>
 							<td>{$score.stotal}</td>
 						{else}
 						<td><span style='font-size:0.8em'>{$shooter.firstname} {$shooter.lastname} Supported</span></td>
 							<td>{$score.score}</td>
-							<td colspan='4'>N/A</td>
+							<td colspan='3'>N/A</td>
 						{/if}
 						<td>{$score.avg}</td>
 					</tr>

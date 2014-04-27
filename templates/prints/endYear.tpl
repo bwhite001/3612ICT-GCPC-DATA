@@ -29,21 +29,7 @@
 	<span class='value'>{$stats.shots[0] + $stats.shots[1]} ({$stats.shots[0]} Pistol and {$stats.shots[1]} Rifle)</span>
 	<span style='clear:both; display:block;'></span>
 
-	{include file='prints/endYearSeries.tpl'}
-</div>
-<div class='page' style='clear:both; padding-top: 10mm'>
-    <div class='pageheader'>
-        <div class='cube male'>
-            <span class='inside'>&#127942;</span>
-        </div>
-        <span class='header'>Weekly Stats Series {$series.snumber} | Page 2</span>
-        <span class='subheader'>{$header}</span>
-        <div class='cube female'>
-            <span class='inside'>&#127942;</span>
-        </div>
-        <span style='display:block; clear:both'></span>
-    </div>
-	<h1>Yearly Point Winners</h1>
+	<h1 class="second">Yearly Point Winners</h1>
 	{foreach from=$aggAll item=vals}
 		{assign "cssValue" $vals.css}
 		{assign "title" $vals.title}
@@ -63,7 +49,6 @@
 					</tr>
 					{foreach from=$shooters item=score name=s}
 						{assign "shooter" getShooter($score.shooter_id)}
-						{assign "cleanDate" date("jS M",$score.date)}
 						<tr {cycle values=" ,class='newColor'"}>
 							{if $smarty.foreach.s.index == 0}
 								<td>1<sup>st</sup></td>
@@ -75,10 +60,10 @@
 								<td>-</td>
 							{/if}
 							<td><span style='font-size:0.8em'>{$shooter.firstname} {$shooter.lastname}</span></td>
-							<td>{$score.points}</td>
-							<td>{$score.count}</td>
-							<td>{$score.score}</td>
-							<td><span style='font-size:0.8em'>{$cleanDate}</span></td>
+							<td><span style='font-size:0.8em'>{$score.points}</span></td>
+							<td><span style='font-size:0.8em'>{$score.count}</span></td>
+							<td><span style='font-size:0.8em'>{$score.score}</span></td>
+							<td><span style='font-size:0.6em'>{$score.date}</span></td>
 							<td>{$score.avg}</td>
 						</tr>
 					{/foreach}
@@ -88,8 +73,64 @@
 		{/if}
 		</div>
 	{/foreach}
-	<span style='display:block; clear:both'></span>
-	<h1 class='second'>Yearly Overall</h1>
+	<span style='display:block; clear:both; margin-bottom: 5mm'></span>
+	<h1>Yearly Top Shots</h1>
+	{foreach from=$yearTopShot item=vals}
+		{assign "cssValue" $vals.css}
+		{assign "title" $vals.title}
+		{assign "shooters" $vals.results}
+		<div class='block {$cssValue}'>
+			<h2>{$title} Winners</h2>
+			{if count($shooters)>0}
+				<table>
+					<tr>
+						<th>Pos</th>
+						<th>Name</th>
+						<th>Count</th>
+						<th>Max</th>
+						<th>Date</th>
+						<th>Avg</th>
+					</tr>
+					{foreach from=$shooters item=score name=s}
+						{assign "shooter" getShooter($score.shooter_id)}
+						<tr {cycle values=" ,class='newColor'"}>
+							{if $smarty.foreach.s.index == 0}
+								<td>1<sup>st</sup></td>
+							{else if $smarty.foreach.s.index == 1}
+								<td>2<sup>nd</sup></td>
+							{else if $smarty.foreach.s.index == 2}
+								<td>3<sup>rd</sup></td>
+							{else}
+								<td>-</td>
+							{/if}
+							<td><span style='font-size:0.8em'>{$shooter.firstname} {$shooter.lastname}</span></td>
+							<td>{$score.count}</td>
+							<td>{$score.score}</td>
+							<td><span style='font-size:0.6em'>{$score.date}</span></td>
+							<td>{$score.avg}</td>
+						</tr>
+					{/foreach}
+				</table>
+		{else}
+			<p style='text-align:center'>No Shooters Entered This Series</p>
+		{/if}
+		</div>
+	{/foreach}
+
+</div>
+<div class='page' style='clear:both; padding-top: 10mm'>
+    <div class='pageheader'>
+        <div class='cube male'>
+            <span class='inside'>&#127942;</span>
+        </div>
+        <span class='header'>End Of Series Presentation <br/> Page 2</span>
+        <span class='subheader'>{$header}</span>
+        <div class='cube female'>
+            <span class='inside'>&#127942;</span>
+        </div>
+        <span style='display:block; clear:both'></span>
+    </div>
+	<h1>Yearly Overall</h1>
 	{foreach from=$yearOverall item=vals}
 		{assign "cssValue" $vals.css}
 		{assign "title" $vals.title}
@@ -107,12 +148,11 @@
 					</tr>
 					{foreach from=$shooters item=score name=s}
 						{assign "shooter" getShooter($score.shooter_id)}
-						{assign "cleanDate" date("jS M",$score.date)}
 						<tr {cycle values=" ,class='newColor'"}>
 							<td><span style='font-size:0.8em'>{$shooter.firstname} {$shooter.lastname}</span></td>
 							<td>{$score.count}</td>
 							<td>{$score.score}</td>
-							<td><span style='font-size:0.8em'>{$cleanDate}</span></td>
+							<td><span style='font-size:0.8em'>{$score.date}</span></td>
 							<td>{$score.avg}</td>
 						</tr>
 					{/foreach}

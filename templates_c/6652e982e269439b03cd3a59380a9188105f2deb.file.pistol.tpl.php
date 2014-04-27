@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-07-22 18:39:33
+<?php /* Smarty version Smarty-3.1.12, created on 2014-01-28 14:40:17
          compiled from "./templates/dashboardTabs/pistol.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:43978861651a90134b96f81-92329807%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:115865064452e726a1b25a09-75947523%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -17,20 +17,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '43978861651a90134b96f81-92329807',
+  'nocache_hash' => '115865064452e726a1b25a09-75947523',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51a90134ddd310_62810110',
   'variables' => 
   array (
     'error_string' => 0,
     'error_is_good' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_52e726a1dc5a86_33548025',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51a90134ddd310_62810110')) {function content_51a90134ddd310_62810110($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_52e726a1dc5a86_33548025')) {function content_52e726a1dc5a86_33548025($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <head>
         <title>Pistol Scoring Administration</title>

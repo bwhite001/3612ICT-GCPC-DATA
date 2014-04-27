@@ -13,14 +13,14 @@ $currentUser = checkLogin(true);
 $smarty = new Smarty;
 $series = getCurrentSeries(getInputData('current_series_id'));
 
-$type = (in_array(getInputData('t'), array("re", "ry", "spy", "spe", "soy", "soe", "miy", "sid"))) ? getInputData('t') : "re";
+$type = (in_array(getInputData('t'), array("re", "ry", "spy", "spe", "soy", "soe", "smi", "sid"))) ? getInputData('t') : "re";
 
 list($headers, $data) = setSmarty($smarty, $type, $series);
 
 $filename = getFilename($series, $type);
 
-header('Content-Type: text/raw; charset=utf-8');
-//print('filename='.$filename.'.csv');
+header('Content-Type: text/csv; charset=utf-8');
+//print('filename='.$filename.'.csv'.'\n');
 header('Content-Disposition: attachment; filename='.$filename.'.csv');
 
 
@@ -62,10 +62,10 @@ function setSmarty($smarty, $type, $series)
 		$year = date("Y",strtotime($series['date_started']));
 		list($headers, $data) = getYearlyOverallShootersCSV($year);
 	}
-	elseif($type == "miy")
+	elseif($type == "smi")
 	{
 		$year = date("Y",strtotime($series['date_started']));
-		list($headers, $data) = getMostImprovedDataDump($year);
+		list($headers, $data) = getMostImprovedCSV($year);
 	}
 	return array($headers, $data);
 }
@@ -102,7 +102,7 @@ function getFilename($series, $type)
 		$year = date("Y",strtotime($series['date_started']));
 		$filename = "pistol_overall_$year";
 	}
-	elseif($type == "miy")
+	elseif($type == "smi")
 	{
 		$year = date("Y",strtotime($series['date_started']));
 		$filename = "most_improved_datadump_$year";

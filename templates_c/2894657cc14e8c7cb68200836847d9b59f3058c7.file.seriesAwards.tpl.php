@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-07-24 14:00:52
+<?php /* Smarty version Smarty-3.1.12, created on 2014-01-28 14:52:50
          compiled from "./templates/dashboardTabs/awards/seriesAwards.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:207179798551ece40b4d6570-03698132%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:150784565752e729929536e3-07964230%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,12 +11,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '207179798551ece40b4d6570-03698132',
+  'nocache_hash' => '150784565752e729929536e3-07964230',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51ece40b4d7a64_27893726',
   'variables' => 
   array (
     'current_series' => 0,
@@ -30,8 +28,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'femaleTop' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_52e72992df3bb7_76498429',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51ece40b4d7a64_27893726')) {function content_51ece40b4d7a64_27893726($_smarty_tpl) {?><?php if (!is_callable('smarty_function_cycle')) include '/var/www/libs/smarty/libs/plugins/function.cycle.php';
+<?php if ($_valid && !is_callable('content_52e72992df3bb7_76498429')) {function content_52e72992df3bb7_76498429($_smarty_tpl) {?><?php if (!is_callable('smarty_function_cycle')) include '/var/www/libs/smarty/libs/plugins/function.cycle.php';
 ?><?php $_smarty_tpl->tpl_vars["currentSeriesYear"] = new Smarty_variable(date("Y",strtotime($_smarty_tpl->tpl_vars['current_series']->value['date_started'])), null, 0);?>
 <p style='text-align:center;'>Download Rifle CSV: <a style='color: #07B;' href='csv.php?t=e' target='_blank'>Click Here</a></p>
 <h1>

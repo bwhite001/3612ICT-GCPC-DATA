@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-07-22 18:39:52
+<?php /* Smarty version Smarty-3.1.12, created on 2014-03-09 19:22:39
          compiled from "./templates/dashboardTabs/stats/seriesStats.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:184485303351a9017e2ab106-79421072%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1671476250531c24cfaa3f16-48100313%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,12 +11,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '184485303351a9017e2ab106-79421072',
+  'nocache_hash' => '1671476250531c24cfaa3f16-48100313',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51a9017e4e5b57_48185876',
   'variables' => 
   array (
     'current_series' => 0,
@@ -26,8 +24,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'weekr' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_531c24cfcf9076_37726141',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51a9017e4e5b57_48185876')) {function content_51a9017e4e5b57_48185876($_smarty_tpl) {?><?php $_smarty_tpl->tpl_vars["currentSeriesYear"] = new Smarty_variable(date("Y",strtotime($_smarty_tpl->tpl_vars['current_series']->value['date_started'])), null, 0);?>
+<?php if ($_valid && !is_callable('content_531c24cfcf9076_37726141')) {function content_531c24cfcf9076_37726141($_smarty_tpl) {?><?php $_smarty_tpl->tpl_vars["currentSeriesYear"] = new Smarty_variable(date("Y",strtotime($_smarty_tpl->tpl_vars['current_series']->value['date_started'])), null, 0);?>
 <h1>Series <?php echo $_smarty_tpl->tpl_vars['current_series']->value['snumber'];?>
 , <?php echo $_smarty_tpl->tpl_vars['currentSeriesYear']->value;?>
  Statistics</h1>

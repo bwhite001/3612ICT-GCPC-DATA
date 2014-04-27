@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-01 07:01:04
+<?php /* Smarty version Smarty-3.1.12, created on 2014-01-28 16:42:20
          compiled from "./templates/dashboardTabs/stats/weeklyStats.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:155162172651a90180b4df98-39956170%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:145218410252e7433c9ef3c2-73148241%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '155162172651a90180b4df98-39956170',
+  'nocache_hash' => '145218410252e7433c9ef3c2-73148241',
   'function' => 
   array (
   ),
@@ -27,9 +27,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51a90180e56d57_34139045',
+  'unifunc' => 'content_52e7433cd1c9e4_80750592',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51a90180e56d57_34139045')) {function content_51a90180e56d57_34139045($_smarty_tpl) {?><?php if (!is_callable('smarty_function_cycle')) include '/var/www/libs/smarty/libs/plugins/function.cycle.php';
+<?php if ($_valid && !is_callable('content_52e7433cd1c9e4_80750592')) {function content_52e7433cd1c9e4_80750592($_smarty_tpl) {?><?php if (!is_callable('smarty_function_cycle')) include '/var/www/libs/smarty/libs/plugins/function.cycle.php';
 ?><h1>
 	<?php if (count($_smarty_tpl->tpl_vars['femaleShooters']->value)>0&&count($_smarty_tpl->tpl_vars['maleShooters']->value)>0){?>
 		<a href="print.php?t=w&week=<?php echo $_smarty_tpl->tpl_vars['weekNumber']->value;?>

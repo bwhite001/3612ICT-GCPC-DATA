@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-07-22 18:20:32
+<?php /* Smarty version Smarty-3.1.12, created on 2014-03-09 10:17:50
          compiled from "./templates/dashboardTabs/rifle.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:178291308851a90133bdfa83-05800801%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1514585032531ba51ef0f469-96968644%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -17,20 +17,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '178291308851a90133bdfa83-05800801',
+  'nocache_hash' => '1514585032531ba51ef0f469-96968644',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51a90133e10011_09831923',
   'variables' => 
   array (
     'error_string' => 0,
     'error_is_good' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_531ba51f251d53_04170300',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51a90133e10011_09831923')) {function content_51a90133e10011_09831923($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_531ba51f251d53_04170300')) {function content_531ba51f251d53_04170300($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <head>
         <title>Rifle Scoring Administration</title>

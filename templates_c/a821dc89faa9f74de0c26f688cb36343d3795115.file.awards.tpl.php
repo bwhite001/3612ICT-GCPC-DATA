@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-07-22 18:55:54
+<?php /* Smarty version Smarty-3.1.12, created on 2014-01-28 14:52:50
          compiled from "./templates/dashboardTabs/awards.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:90433899651ece2e0c2b256-03766035%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:144828859752e7299279bf54-70435892%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -17,20 +17,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '90433899651ece2e0c2b256-03766035',
+  'nocache_hash' => '144828859752e7299279bf54-70435892',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51ece2e0d91228_35804061',
   'variables' => 
   array (
     'error_string' => 0,
     'error_is_good' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_52e7299292c692_89235711',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51ece2e0d91228_35804061')) {function content_51ece2e0d91228_35804061($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_52e7299292c692_89235711')) {function content_52e7299292c692_89235711($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <head>
         <title>Scoring Administration Stats</title>

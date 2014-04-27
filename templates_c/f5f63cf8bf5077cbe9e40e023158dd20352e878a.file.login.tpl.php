@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-01 01:06:44
+<?php /* Smarty version Smarty-3.1.12, created on 2013-12-11 03:59:44
          compiled from "./templates/login.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:153799936751a8ae74b59275-00078302%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:113764152352a74880035272-35193013%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '153799936751a8ae74b59275-00078302',
+  'nocache_hash' => '113764152352a74880035272-35193013',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51a8ae74c2e7b8_72798116',
+  'unifunc' => 'content_52a74880106df3_35020386',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51a8ae74c2e7b8_72798116')) {function content_51a8ae74c2e7b8_72798116($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_52a74880106df3_35020386')) {function content_52a74880106df3_35020386($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <head>
         <title>GCPC Admin Login</title>

@@ -120,6 +120,11 @@ function getPrintView($tab, $current_series, $smarty)
 
 			$smarty->assign("yearOverall", array($maleOverall, $femaleOverall));
 
+			$maleTopShot = array('css' => 'male', 'title' => 'Male', 'results' => getYearlyTopShot($current_year, true, true));
+			$femaleTopShot = array('css' => 'female', 'title' => 'Female', 'results' => getYearlyTopShot($current_year, false, true));
+
+			$smarty->assign("yearTopShot", array($maleTopShot, $femaleTopShot));
+
 			break;
 	}
 

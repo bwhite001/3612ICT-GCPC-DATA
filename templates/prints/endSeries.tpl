@@ -1,7 +1,7 @@
 {extends file="../print.tpl"}
 {block name=title}Pistol Scoring Administration{/block}
 {block name=template}weekly{/block}
-{block name=header}End Of Year Presentation{/block}
+{block name=header}End Of Series Presentation{/block}
 {block name=subheader}{$header}{/block}
 {block name=body}
 	<style type="text/css">

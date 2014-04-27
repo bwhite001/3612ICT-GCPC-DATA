@@ -1,13 +1,13 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-11-28 12:42:40
+<?php /* Smarty version Smarty-3.1.12, created on 2014-01-28 14:52:58
          compiled from "./templates/prints/endSeries.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:94301081151ef55b3850895-74254968%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:115658547852e7299a048669-34441897%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'bb6a9d0c4be149e03b4bdb0307e8e80cd0d7dc19' => 
     array (
       0 => './templates/prints/endSeries.tpl',
-      1 => 1385602929,
+      1 => 1386678473,
       2 => 'file',
     ),
     '1618c41e762b7b98a0e4fb8217ffd9d9e5d1ca69' => 
@@ -17,15 +17,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '94301081151ef55b3850895-74254968',
+  'nocache_hash' => '115658547852e7299a048669-34441897',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51ef55b3a2c925_39091383',
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_52e7299a8137c6_97608313',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51ef55b3a2c925_39091383')) {function content_51ef55b3a2c925_39091383($_smarty_tpl) {?><?php if (!is_callable('smarty_function_cycle')) include '/var/www/libs/smarty/libs/plugins/function.cycle.php';
+<?php if ($_valid && !is_callable('content_52e7299a8137c6_97608313')) {function content_52e7299a8137c6_97608313($_smarty_tpl) {?><?php if (!is_callable('smarty_function_cycle')) include '/var/www/libs/smarty/libs/plugins/function.cycle.php';
 ?><!DOCTYPE html>
 <html>
     <head>
@@ -41,7 +41,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div class='cube male'>
                     <span class='inside'>&#127942;</span>
                 </div>
-                <span class='header'>End Of Year Presentation</span>
+                <span class='header'>End Of Series Presentation</span>
                 <span class='subheader'><?php echo $_smarty_tpl->tpl_vars['header']->value;?>
 </span>
                 <div class='cube female'>

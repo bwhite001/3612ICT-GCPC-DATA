@@ -147,10 +147,20 @@ function pistolOverallCSV($results)
 	return array($headers, $data);
 }
 
-function getMostImprovedDataDump($year)
+function getMostImprovedCSV($year)
 {
-	$headers = array("Name", "M-F", "J","Score","Date");
-	$results = getYearlyDataDump($year);
+	$headers = array("Name", "M-F", "J");
+	$results = getYearlyAvgMaxs($year);
+
+	$seriesNums = getSeriesArray($year);
+	foreach ($seriesNums as $seriesId) {
+		$current_series_id = $seriesId['id'];
+        $series = getSeries($current_series_id);
+
+        $headers[] = "AVG Series ".$series['snumber'];
+        $headers[] = "MAX Series ".$series['snumber'];
+	}
+
 	$data = array();
 
 	foreach ($results as $score) {
@@ -163,7 +173,15 @@ function getMostImprovedDataDump($year)
 
 			$j = ($shooter['senior']) ? "" : "J";
 			
-			$csvLine = array($name, $mf, $j, $score['score'], $score['date'], $score['count'], $score['avg']);
+			$csvLine = array($name, $mf, $j);
+
+			foreach ($seriesNums as $seriesId) {
+				$current_series_id = $seriesId['id'];
+		        $series = getSeries($current_series_id);
+
+		        $csvLine[] = $score['max_series'.$series['snumber']];
+        		$csvLine[] = $score['avg_series'.$series['snumber']];
+			}
 
 			$data[] = $csvLine;
 		}

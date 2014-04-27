@@ -128,28 +128,82 @@ function getYearlyOverall($year, $male)
 
     return $data;
 }
-
-function getYearlyDataDump($year)
+function getYearlyTopShot($year, $male)
 {
-  $year = sanitiseMyStringNow($year);
-  $yearSql = "SELECT id FROM `series` WHERE YEAR(date_started) = $year";
+    $year = sanitiseMyStringNow($year);
+    $yearSql = "SELECT id FROM `series` WHERE YEAR(date_started) = $year";
 
-  $data = array();
 
-  $main_sql = "SELECT * FROM scores WHERE series_id in ($yearSql);";
+    $data = array();
 
-  $data = getArray("-1", $main_sql);
+    $main_sql = "SELECT * FROM scores WHERE series_id in ($yearSql) AND shooter_id in (SELECT id FROM `shooters` WHERE male = '$male') GROUP BY shooter_id ORDER BY score DESC;";
 
-  uasort($data, function ($i, $j) {
-        $x = getShooter($i['shooter_id']);
-        $y = getShooter($j['shooter_id']);
-        $a = $x['lastname'];
-        $b = $y['lastname'];
-        if ($a == $b) return 0;
-        elseif ($a < $b) return -1;
-        else return 1;
+    $tmp = getArray("-1", $main_sql);
+
+    foreach ($tmp as $shooter) {
+
+        $query = "SELECT * FROM scores WHERE series_id in ($yearSql) AND shooter_id = ".$shooter['shooter_id'];
+
+        $shooter['count'] = getSqlCount($query);
+
+        $shooter['avg'] = getShooterStats($shooter['shooter_id'],"AVG","year", $year);
+        $shooter['score'] = getShooterStats($shooter['shooter_id'],"MAX","year", $year);
+
+        if($shooter['count'] >= 8)
+          $data[] = $shooter;
+
+    }
+
+    uasort($data, function ($i, $j) {
+        $a = $i['score'];
+        $b = $j['score'];
+        $ac = $i['count'];
+        $bc = $j['count'];
+        if ($a < $b) return 1;
+        elseif ($a > $b) return -1;
+        elseif ($a == $b)
+        {
+            if($ac > $bc)
+            {
+               return -1; 
+            }
+            elseif($bc > $ac)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     });
+    $data = array_slice($data, 0, 4);
+    return $data;
+}
+function getYearlyAvgMaxs($year)
+{
+    $year = sanitiseMyStringNow($year);
+    $yearSql = "SELECT id FROM `series` WHERE YEAR(date_started) = $year";
 
+    $seriesNums = getSeriesArray($year);
+
+    $data = array();
+
+    $main_sql = "SELECT * FROM scores WHERE series_id in ($yearSql) GROUP BY shooter_id ORDER BY score DESC;";
+
+    $tmp = getArray("-1", $main_sql);
+    foreach ($tmp as $shooter) {
+
+      foreach ($seriesNums as $seriesId) {
+        $current_series_id = $seriesId['id'];
+        $series = getSeries($current_series_id);
+
+        $shooter['max_series'.$series['snumber']] = getShooterStats($shooter['shooter_id'],"MAX","series", $current_series_id);
+        $shooter['avg_series'.$series['snumber']] = getShooterStats($shooter['shooter_id'],"AVG","series", $current_series_id);
+      }
+
+       $data[] = $shooter;
+    }
   return $data;
 }
 ?>
